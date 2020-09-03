@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>2 | Burak Giray</title>
-    <link>/www.burakgiray.com/publication-type/2/</link>
-      <atom:link href="/www.burakgiray.com/publication-type/2/index.xml" rel="self" type="application/rss+xml" />
+    <link>/publication-type/2/</link>
+      <atom:link href="/publication-type/2/index.xml" rel="self" type="application/rss+xml" />
     <description>2</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020</copyright><lastBuildDate>Wed, 01 Jul 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/www.burakgiray.com/img/avatar</url>
+      <url>/img/avatar</url>
       <title>2</title>
-      <link>/www.burakgiray.com/publication-type/2/</link>
+      <link>/publication-type/2/</link>
     </image>
     
     <item>
       <title>Election Accomplished: Democracies and the Timing of Peacekeeper Drawdowns</title>
-      <link>/www.burakgiray.com/publication/journal-article/</link>
+      <link>/publication/journal-article/</link>
       <pubDate>Wed, 01 Jul 2020 00:00:00 +0000</pubDate>
-      <guid>/www.burakgiray.com/publication/journal-article/</guid>
+      <guid>/publication/journal-article/</guid>
       <description></description>
     </item>
     
