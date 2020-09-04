@@ -1,0 +1,1446 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Burak Giray">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="The Objectives: The objectives are to practice methods for diagnosing and resolving the problem of non-constant error variance, also known as heteroskedasticity. There exist other, simpler methods for both tasks, but they were designed for (and are most easily implemented in) bivariate regression; we will focus instead on methods that are applicable to multivariate regression">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/trial/trial2/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#3f51b5">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="/post/trial/trial2/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@burak92giray">
+  <meta property="twitter:creator" content="@burak92giray">
+  
+  <meta property="og:site_name" content="Burak Giray">
+  <meta property="og:url" content="/post/trial/trial2/">
+  <meta property="og:title" content="Sample Lab Session | Burak Giray">
+  <meta property="og:description" content="The Objectives: The objectives are to practice methods for diagnosing and resolving the problem of non-constant error variance, also known as heteroskedasticity. There exist other, simpler methods for both tasks, but they were designed for (and are most easily implemented in) bivariate regression; we will focus instead on methods that are applicable to multivariate regression"><meta property="og:image" content="/img/avatar">
+  <meta property="twitter:image" content="/img/avatar"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2020-09-04T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2020-09-04T00:18:56-05:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/post/trial/trial2/"
+  },
+  "headline": "Sample Lab Session",
+  
+  "datePublished": "2020-09-04T00:00:00Z",
+  "dateModified": "2020-09-04T00:18:56-05:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Burak Giray"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Burak Giray",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "The Objectives: The objectives are to practice methods for diagnosing and resolving the problem of non-constant error variance, also known as heteroskedasticity. There exist other, simpler methods for both tasks, but they were designed for (and are most easily implemented in) bivariate regression; we will focus instead on methods that are applicable to multivariate regression"
+}
+</script>
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Sample Lab Session | Burak Giray</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Burak Giray</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Burak Giray</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#featured"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/files/burakgiray.pdf"><span>CV</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Sample Lab Session</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Last updated on
+      
+    
+    Sep 4, 2020
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    10 min read
+  </span>
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+
+<p><strong>The Objectives:</strong> The objectives are to practice methods for diagnosing and resolving the problem of non-constant error variance, also known as heteroskedasticity. There exist other, simpler methods for both tasks, but they were designed for (and are most easily implemented in) bivariate regression; we will focus instead on methods that are applicable to multivariate regression</p>
+<pre class="r"><code>library(car)
+library(haven)
+library(foreign)
+library(lmtest)
+library(sandwich)</code></pre>
+<pre class="r"><code>abdta&lt;-read.dta(&quot;~/Desktop/myblog/content/post/trial/abortions.dta&quot;)
+popdta&lt;- read_dta(&quot;~/Desktop/myblog/content/post/trial/populations.dta&quot;)
+base&lt;-lm(abortion~price+income+picket+funds, data=abdta);summary(base)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = abortion ~ price + income + picket + funds, data = abdta)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -10.7819  -5.2738  -0.4338   4.2400  16.5978 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -2.2564210  9.2980030  -0.243   0.8094    
+## price       -0.0469599  0.0216102  -2.173   0.0351 *  
+## income       0.0021722  0.0004182   5.194 4.81e-06 ***
+## picket      -0.1023769  0.0388752  -2.633   0.0115 *  
+## funds        3.2519365  2.6695430   1.218   0.2295    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 7.011 on 45 degrees of freedom
+## Multiple R-squared:  0.5539, Adjusted R-squared:  0.5142 
+## F-statistic: 13.97 on 4 and 45 DF,  p-value: 1.746e-07</code></pre>
+<pre class="r"><code>avPlots(base, pch = 19)</code></pre>
+<p><img src="/post/trial/2020-09-04-trial2.en_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre class="r"><code>plot(base)</code></pre>
+<p><img src="/post/trial/2020-09-04-trial2.en_files/figure-html/unnamed-chunk-2-2.png" width="672" /><img src="/post/trial/2020-09-04-trial2.en_files/figure-html/unnamed-chunk-2-3.png" width="672" /><img src="/post/trial/2020-09-04-trial2.en_files/figure-html/unnamed-chunk-2-4.png" width="672" /><img src="/post/trial/2020-09-04-trial2.en_files/figure-html/unnamed-chunk-2-5.png" width="672" /></p>
+<pre class="r"><code>abdta$uhat&lt;-base$residuals; abdta$yhat&lt;-base$fitted.values
+plot(abdta$income, abdta$yhat); abline(lm(yhat~income, abdta))</code></pre>
+<p><img src="/post/trial/2020-09-04-trial2.en_files/figure-html/unnamed-chunk-2-6.png" width="672" /></p>
+<pre class="r"><code>plot(abdta$income, abdta$uhat); abline(h=0, col=&quot;red&quot;)</code></pre>
+<p><img src="/post/trial/2020-09-04-trial2.en_files/figure-html/unnamed-chunk-2-7.png" width="672" /></p>
+<div id="part-1-diagnosing-heteroskedasticity" class="section level1">
+<h1>Part 1: Diagnosing Heteroskedasticity</h1>
+<pre class="r"><code>abdta$uhatsq&lt;-abdta$uhat^2
+bp&lt;-lm(abdta$uhatsq~abdta$price+abdta$income+abdta$picket+abdta$funds); summary(bp)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = abdta$uhatsq ~ abdta$price + abdta$income + abdta$picket + 
+##     abdta$funds)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -76.427 -32.878  -8.084  13.369 198.542 
+## 
+## Coefficients:
+##                Estimate Std. Error t value Pr(&gt;|t|)  
+## (Intercept)  -81.516086  71.661327  -1.138   0.2613  
+## abdta$price    0.281716   0.166553   1.691   0.0977 .
+## abdta$income   0.003380   0.003223   1.049   0.3000  
+## abdta$picket  -0.618579   0.299618  -2.065   0.0448 *
+## abdta$funds   30.115592  20.574632   1.464   0.1502  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 54.03 on 45 degrees of freedom
+## Multiple R-squared:  0.2996, Adjusted R-squared:  0.2373 
+## F-statistic: 4.811 on 4 and 45 DF,  p-value: 0.002569</code></pre>
+<pre class="r"><code># LM test (optional)
+rsq &lt;- summary(bp)$r.squared
+nrsq = NROW(abdta$uhat)*rsq
+dfbp = bp$rank-1
+pchisq(nrsq, dfbp, ncp=0, lower.tail=FALSE, log.p=FALSE)</code></pre>
+<pre><code>## [1] 0.004748088</code></pre>
+<pre class="r"><code>##Breusch-Pagan and Cook-Weisberg Tests
+bptest(base)</code></pre>
+<pre><code>## 
+##  studentized Breusch-Pagan test
+## 
+## data:  base
+## BP = 14.978, df = 4, p-value = 0.004748</code></pre>
+<pre class="r"><code>ncvTest(base)</code></pre>
+<pre><code>## Non-constant Variance Score Test 
+## Variance formula: ~ fitted.values 
+## Chisquare = 7.313688, Df = 1, p = 0.0068431</code></pre>
+<pre class="r"><code>#White Test (Alternative Method)
+abdta$yhatsq = (abdta$yhat)^2
+whitetest&lt;-lm(uhatsq ~ yhat + yhatsq, abdta); summary(whitetest)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = uhatsq ~ yhat + yhatsq, data = abdta)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -80.234 -33.560  -6.269  19.709 201.726 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)  7.11914   54.19278   0.131    0.896
+## yhat         0.05557    5.36354   0.010    0.992
+## yhatsq       0.07520    0.12438   0.605    0.548
+## 
+## Residual standard error: 57.93 on 47 degrees of freedom
+## Multiple R-squared:  0.1591, Adjusted R-squared:  0.1234 
+## F-statistic: 4.447 on 2 and 47 DF,  p-value: 0.01702</code></pre>
+<pre class="r"><code>nr2 = NROW(whitetest$residuals)*summary(whitetest)$r.squared
+dfwhite = whitetest$rank-1
+pchisq(nr2, dfwhite, ncp=0, lower.tail=FALSE, log.p=FALSE)</code></pre>
+<pre><code>## [1] 0.01871504</code></pre>
+<pre class="r"><code># run r-script &quot;white-test.R&quot;
+white.test &lt;- function(lmobj, squares.only=FALSE)
+{
+  stopifnot(class(lmobj)==&#39;lm&#39;)
+  mydata &lt;- lmobj$model
+  mydata[,1] &lt;- lmobj$residual^2
+  fml &lt;- lmobj$call$formula
+  formula1 &lt;- paste(fml[2],fml[1],fml[3])
+  pvs &lt;- attr(lmobj$terms,&quot;term.labels&quot;)
+  k &lt;- length(pvs);
+  n &lt;- length(lmobj$fit)
+  
+  for(i in 1:k){
+    tmp &lt;- NULL;
+    if(substr(pvs[i],1,2)==&quot;I(&quot;){
+      tmp2 &lt;- substr(pvs[i],3, nchar(pvs[i])-1);
+    }else{
+      tmp2 &lt;- pvs[i];
+    }
+    for(j in 1:nchar(tmp2)){
+      tmp1 &lt;- substr(tmp2,j,j)
+      if(tmp1 == &quot;:&quot;)
+        tmp &lt;- paste(tmp, &quot;*&quot;, sep=&#39;&#39;)
+      else
+        tmp &lt;- paste(tmp, tmp1, sep=&#39;&#39;)
+    }
+    pvs[i] &lt;- tmp
+  }
+  formula2 &lt;- paste(fml[2],fml[1])
+  for(i in 1:k){
+    if(i&gt;1)
+      formula2 &lt;- paste(formula2, &quot;+&quot;, sep=&#39;&#39;)
+    formula2 &lt;- paste(formula2, &quot;I(&quot;, pvs[i],&quot;)&quot;,sep=&#39;&#39;)
+    if(squares.only){
+      formula2 &lt;- paste(formula2, &quot;+I(&quot;, pvs[i], 
+                        &quot;*&quot;, pvs[i], &quot;)&quot;, sep = &quot;&quot;)
+    }else{
+      for(j in i:k)
+        formula2 &lt;- paste(formula2,&quot;+I(&quot;,pvs[i],
+                          &quot;*&quot;,pvs[j],&quot;)&quot;, sep=&#39;&#39;)
+    }
+  }
+  
+  method &lt;- ifelse(squares.only,
+                   &quot;White test for constant variance, squares only&quot;,
+                   &quot;White test for constant variance&quot;)
+  
+  out &lt;- lm(as.formula(formula2),data=mydata)
+  if(summary(out)$r.squared == 1.0){
+    RVAL &lt;- NULL;
+    warning(&quot;Test failed.  Possible reasons:\n\t (1) collinearity, or (2) sample size is not big enough for the White&#39;s test.&quot;);
+  }else{
+    LM = summary(out)$r.squared * n  
+    names(LM) &lt;- &quot;White&quot;
+    df &lt;- out$rank - 1
+    names(df) &lt;- &quot;df&quot;;
+    RVAL &lt;- list(statistic = LM,
+                 parameter = df,
+                 method = method,
+                 p.value= pchisq(LM,df,lower.tail=FALSE),
+                 data.name=NULL)
+    class(RVAL) &lt;- &quot;htest&quot;
+  }
+  return(RVAL)
+}
+
+
+
+
+white.test(base)</code></pre>
+<pre><code>## 
+##  White test for constant variance
+## 
+## data:  
+## White = 22.922, df = 13, p-value = 0.04263</code></pre>
+<pre class="r"><code>rm(white.test)</code></pre>
+<p>#B. Attempting to “fix” heteroskedasticity</p>
+<pre class="r"><code>mdata &lt;- merge(abdta, popdta, by=&quot;state&quot;)
+mdata$pop1990k &lt;- mdata$pop1990/1000
+plot(mdata$pop1990k, mdata$uhat, pch=19); abline(h=0, col=&quot;red&quot;)</code></pre>
+<p><img src="/post/trial/2020-09-04-trial2.en_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre class="r"><code>#FGLS
+mdata$pop1990ksq &lt;- mdata$pop1990k^2
+mdata$uhatsq &lt;- (mdata$uhat)^2
+fglsmod &lt;- lm(mdata$uhatsq ~ mdata$pop1990k + mdata$pop1990ksq); summary(fglsmod)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = mdata$uhatsq ~ mdata$pop1990k + mdata$pop1990ksq)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -56.819 -34.653 -13.247   8.788 221.276 
+## 
+## Coefficients:
+##                    Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)       6.294e+01  1.474e+01   4.271 9.41e-05 ***
+## mdata$pop1990k   -8.345e-03  3.932e-03  -2.122  0.03912 *  
+## mdata$pop1990ksq  4.217e-07  1.559e-07   2.706  0.00947 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 58.27 on 47 degrees of freedom
+## Multiple R-squared:  0.1492, Adjusted R-squared:  0.113 
+## F-statistic:  4.12 on 2 and 47 DF,  p-value: 0.02245</code></pre>
+<pre class="r"><code>mdata$wsq &lt;- predict(fglsmod)
+mdata$w &lt;- sqrt(mdata$wsq)
+mdata$one_w &lt;- 1/mdata$w
+mdata$abortion_w &lt;- mdata$abortion/mdata$w
+mdata$price_w &lt;- mdata$price/mdata$w
+mdata$income_w &lt;- mdata$income/mdata$w
+mdata$picket_w &lt;- mdata$picket/mdata$w
+mdata$funds_w &lt;- mdata$funds/mdata$w
+fglsmod.1 &lt;- lm(abortion_w ~ one_w + price_w + income_w + picket_w + funds_w - 1, data=mdata);summary(fglsmod.1)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = abortion_w ~ one_w + price_w + income_w + picket_w + 
+##     funds_w - 1, data = mdata)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.44086 -0.77996 -0.02785  0.65345  2.35349 
+## 
+## Coefficients:
+##            Estimate Std. Error t value Pr(&gt;|t|)    
+## one_w    -0.6007669  8.6964198  -0.069  0.94523    
+## price_w  -0.0375035  0.0211244  -1.775  0.08260 .  
+## income_w  0.0019418  0.0003699   5.249    4e-06 ***
+## picket_w -0.1065614  0.0378695  -2.814  0.00723 ** 
+## funds_w   2.5590867  2.4201327   1.057  0.29597    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1.01 on 45 degrees of freedom
+## Multiple R-squared:  0.9305, Adjusted R-squared:  0.9227 
+## F-statistic: 120.4 on 5 and 45 DF,  p-value: &lt; 2.2e-16</code></pre>
+<pre class="r"><code>fglsmod.2 &lt;- lm(abortion_w ~ 0 + one_w + price_w + income_w + picket_w + funds_w, data=mdata);summary(fglsmod.2)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = abortion_w ~ 0 + one_w + price_w + income_w + picket_w + 
+##     funds_w, data = mdata)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.44086 -0.77996 -0.02785  0.65345  2.35349 
+## 
+## Coefficients:
+##            Estimate Std. Error t value Pr(&gt;|t|)    
+## one_w    -0.6007669  8.6964198  -0.069  0.94523    
+## price_w  -0.0375035  0.0211244  -1.775  0.08260 .  
+## income_w  0.0019418  0.0003699   5.249    4e-06 ***
+## picket_w -0.1065614  0.0378695  -2.814  0.00723 ** 
+## funds_w   2.5590867  2.4201327   1.057  0.29597    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1.01 on 45 degrees of freedom
+## Multiple R-squared:  0.9305, Adjusted R-squared:  0.9227 
+## F-statistic: 120.4 on 5 and 45 DF,  p-value: &lt; 2.2e-16</code></pre>
+<pre class="r"><code>#WLS shortcut using &quot;analytic weights&quot; 
+wlsmod &lt;- lm(abortion ~ price + income + picket + funds, data=mdata, weights = 1/wsq); summary(wlsmod)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = abortion ~ price + income + picket + funds, data = mdata, 
+##     weights = 1/wsq)
+## 
+## Weighted Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.44086 -0.77996 -0.02785  0.65345  2.35349 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -0.6007669  8.6964198  -0.069  0.94523    
+## price       -0.0375035  0.0211244  -1.775  0.08260 .  
+## income       0.0019418  0.0003699   5.249    4e-06 ***
+## picket      -0.1065614  0.0378695  -2.814  0.00723 ** 
+## funds        2.5590867  2.4201327   1.057  0.29597    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1.01 on 45 degrees of freedom
+## Multiple R-squared:  0.5456, Adjusted R-squared:  0.5052 
+## F-statistic: 13.51 on 4 and 45 DF,  p-value: 2.607e-07</code></pre>
+<pre class="r"><code>#Wooldridge&#39;s WLS
+mdata$luhatsq &lt;- log(mdata$uhatsq)
+wooldridge &lt;- lm(luhatsq ~ price + income + picket + funds + pop1990k + pop1990ksq, data=mdata); summary(wooldridge)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = luhatsq ~ price + income + picket + funds + pop1990k + 
+##     pop1990ksq, data = mdata)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -7.6635 -0.6789  0.3809  1.4745  3.7184 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)  
+## (Intercept)  1.926e-01  3.320e+00   0.058   0.9540  
+## price        5.202e-03  8.374e-03   0.621   0.5378  
+## income       1.288e-04  1.642e-04   0.785   0.4370  
+## picket      -3.062e-02  1.402e-02  -2.183   0.0345 *
+## funds        7.818e-02  9.832e-01   0.080   0.9370  
+## pop1990k    -1.369e-04  1.912e-04  -0.716   0.4779  
+## pop1990ksq   7.113e-09  7.294e-09   0.975   0.3349  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.499 on 43 degrees of freedom
+## Multiple R-squared:  0.1967, Adjusted R-squared:  0.08461 
+## F-statistic: 1.755 on 6 and 43 DF,  p-value: 0.1315</code></pre>
+<pre class="r"><code>mdata$woolfit &lt;- exp(wooldridge$fitted.values)
+mdata$wool.w = 1/mdata$woolfit
+wooldridge.wls&lt;-lm(abortion~price+income+picket+funds, data=mdata, weights=mdata$wool.w);summary(wooldridge.wls)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = abortion ~ price + income + picket + funds, data = mdata, 
+##     weights = mdata$wool.w)
+## 
+## Weighted Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -4.0858 -0.9771 -0.0352  1.2424  4.0267 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  5.8541736  6.9584084   0.841  0.40462    
+## price       -0.0535906  0.0179066  -2.993  0.00448 ** 
+## income       0.0016697  0.0003353   4.980 9.83e-06 ***
+## picket      -0.0539374  0.0337862  -1.596  0.11739    
+## funds        2.1618462  2.3946319   0.903  0.37145    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1.907 on 45 degrees of freedom
+## Multiple R-squared:  0.5419, Adjusted R-squared:  0.5012 
+## F-statistic: 13.31 on 4 and 45 DF,  p-value: 3.101e-07</code></pre>
+<pre class="r"><code>#Robust Standard Errors
+lm.mod &lt;- lm(abortion ~ price + income + picket + funds, data=mdata); summary(lm.mod)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = abortion ~ price + income + picket + funds, data = mdata)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -10.7819  -5.2738  -0.4338   4.2400  16.5978 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -2.2564210  9.2980030  -0.243   0.8094    
+## price       -0.0469599  0.0216102  -2.173   0.0351 *  
+## income       0.0021722  0.0004182   5.194 4.81e-06 ***
+## picket      -0.1023769  0.0388752  -2.633   0.0115 *  
+## funds        3.2519365  2.6695430   1.218   0.2295    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 7.011 on 45 degrees of freedom
+## Multiple R-squared:  0.5539, Adjusted R-squared:  0.5142 
+## F-statistic: 13.97 on 4 and 45 DF,  p-value: 1.746e-07</code></pre>
+<pre class="r"><code>robse&lt;-vcovHC(lm.mod, type=&quot;HC1&quot;); coeftest(lm.mod,robse)</code></pre>
+<pre><code>## 
+## t test of coefficients:
+## 
+##                Estimate  Std. Error t value  Pr(&gt;|t|)    
+## (Intercept) -2.25642105 10.19181964 -0.2214   0.82579    
+## price       -0.04695987  0.02618162 -1.7936   0.07960 .  
+## income       0.00217224  0.00045171  4.8090 1.733e-05 ***
+## picket      -0.10237693  0.04191107 -2.4427   0.01857 *  
+## funds        3.25193647  3.00853040  1.0809   0.28550    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre class="r"><code>robust&lt;-hccm(lm.mod); coeftest(lm.mod,robust)</code></pre>
+<pre><code>## 
+## t test of coefficients:
+## 
+##                Estimate  Std. Error t value  Pr(&gt;|t|)    
+## (Intercept) -2.25642105 11.87234167 -0.1901 0.8501193    
+## price       -0.04695987  0.03228109 -1.4547 0.1526879    
+## income       0.00217224  0.00050989  4.2602 0.0001028 ***
+## picket      -0.10237693  0.04917129 -2.0820 0.0430545 *  
+## funds        3.25193647  3.42510627  0.9494 0.3474678    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre class="r"><code>#log transformed dependent variable
+mdata$lnabortion &lt;- log(mdata$abortion)
+log.mod &lt;- lm(lnabortion ~ price + income + picket + funds, data=mdata); summary(log.mod)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = lnabortion ~ price + income + picket + funds, data = mdata)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.83928 -0.25514  0.01773  0.30740  0.59489 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  1.993e+00  4.648e-01   4.289 9.39e-05 ***
+## price       -3.330e-03  1.080e-03  -3.082  0.00350 ** 
+## income       1.145e-04  2.091e-05   5.478 1.84e-06 ***
+## picket      -5.708e-03  1.943e-03  -2.937  0.00521 ** 
+## funds        1.028e-01  1.335e-01   0.770  0.44537    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.3505 on 45 degrees of freedom
+## Multiple R-squared:  0.568,  Adjusted R-squared:  0.5296 
+## F-statistic: 14.79 on 4 and 45 DF,  p-value: 8.671e-08</code></pre>
+<pre class="r"><code>plot(log.mod$fitted.values, log.mod$residuals, pch = 19); abline(h=0, col = &quot;red&quot;)</code></pre>
+<p><img src="/post/trial/2020-09-04-trial2.en_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
+<pre class="r"><code>plot(mdata$pop1990k, log.mod$residuals, pch = 19); abline(h=0, col = &quot;red&quot;)</code></pre>
+<p><img src="/post/trial/2020-09-04-trial2.en_files/figure-html/unnamed-chunk-4-3.png" width="672" /></p>
+<pre class="r"><code>bptest(log.mod)</code></pre>
+<pre><code>## 
+##  studentized Breusch-Pagan test
+## 
+## data:  log.mod
+## BP = 5.836, df = 4, p-value = 0.2117</code></pre>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/post/trial/trial2/&amp;text=Sample%20Lab%20Session" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/post/trial/trial2/&amp;t=Sample%20Lab%20Session" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Sample%20Lab%20Session&amp;body=/post/trial/trial2/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/post/trial/trial2/&amp;title=Sample%20Lab%20Session" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Sample%20Lab%20Session%20/post/trial/trial2/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/post/trial/trial2/&amp;title=Sample%20Lab%20Session" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+    
+    
+    
+      
+    
+    
+    
+    <div class="media author-card content-widget-hr">
+      
+        
+        <img class="avatar mr-3 avatar-circle" src="/author/burak-giray/avatar_hud73719055d6225809aa45455c0cd7fb5_573646_270x270_fill_q90_lanczos_center.jpg" alt="Burak Giray">
+      
+
+      <div class="media-body">
+        <h5 class="card-title"><a href="/">Burak Giray</a></h5>
+        <h6 class="card-subtitle">Research &amp; Teaching Assistant</h6>
+        <p class="card-text">My research interests include Composition of UN Peacekeepers, Supply-side of Peacekeeping, Peace Settlements matter.</p>
+        <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/Burak92Giray" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/burakgiray" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+      </div>
+    </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.37431be2d92d7fb0160054761ab79602.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+  <p class="powered-by">
+    
+      <a href="/privacy/">Privacy Policy</a>
+    
+    
+       &middot; 
+      <a href="/terms/">Terms</a>
+    
+  </p>
+  
+
+  <p class="powered-by">
+    ©2020
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
