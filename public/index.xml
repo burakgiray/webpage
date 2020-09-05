@@ -77,464 +77,6 @@
     </item>
     
     <item>
-      <title>Sample Lab Session</title>
-      <link>/post/trial/trial2/</link>
-      <pubDate>Fri, 04 Sep 2020 00:00:00 +0000</pubDate>
-      <guid>/post/trial/trial2/</guid>
-      <description>
-
-
-&lt;p&gt;&lt;strong&gt;The Objectives:&lt;/strong&gt; The objectives are to practice methods for diagnosing and resolving the problem of non-constant error variance, also known as heteroskedasticity. There exist other, simpler methods for both tasks, but they were designed for (and are most easily implemented in) bivariate regression; we will focus instead on methods that are applicable to multivariate regression&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(car)
-library(haven)
-library(foreign)
-library(lmtest)
-library(sandwich)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;abdta&amp;lt;-read.dta(&amp;quot;~/Desktop/myblog/content/post/trial/abortions.dta&amp;quot;)
-popdta&amp;lt;- read_dta(&amp;quot;~/Desktop/myblog/content/post/trial/populations.dta&amp;quot;)
-base&amp;lt;-lm(abortion~price+income+picket+funds, data=abdta);summary(base)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-## Call:
-## lm(formula = abortion ~ price + income + picket + funds, data = abdta)
-## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -10.7819  -5.2738  -0.4338   4.2400  16.5978 
-## 
-## Coefficients:
-##               Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept) -2.2564210  9.2980030  -0.243   0.8094    
-## price       -0.0469599  0.0216102  -2.173   0.0351 *  
-## income       0.0021722  0.0004182   5.194 4.81e-06 ***
-## picket      -0.1023769  0.0388752  -2.633   0.0115 *  
-## funds        3.2519365  2.6695430   1.218   0.2295    
-## ---
-## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
-## 
-## Residual standard error: 7.011 on 45 degrees of freedom
-## Multiple R-squared:  0.5539, Adjusted R-squared:  0.5142 
-## F-statistic: 13.97 on 4 and 45 DF,  p-value: 1.746e-07&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;avPlots(base, pch = 19)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/trial/2020-09-04-trial2.en_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(base)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/trial/2020-09-04-trial2.en_files/figure-html/unnamed-chunk-2-2.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;/post/trial/2020-09-04-trial2.en_files/figure-html/unnamed-chunk-2-3.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;/post/trial/2020-09-04-trial2.en_files/figure-html/unnamed-chunk-2-4.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;/post/trial/2020-09-04-trial2.en_files/figure-html/unnamed-chunk-2-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;abdta$uhat&amp;lt;-base$residuals; abdta$yhat&amp;lt;-base$fitted.values
-plot(abdta$income, abdta$yhat); abline(lm(yhat~income, abdta))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/trial/2020-09-04-trial2.en_files/figure-html/unnamed-chunk-2-6.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(abdta$income, abdta$uhat); abline(h=0, col=&amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/trial/2020-09-04-trial2.en_files/figure-html/unnamed-chunk-2-7.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;div id=&#34;part-1-diagnosing-heteroskedasticity&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Part 1: Diagnosing Heteroskedasticity&lt;/h1&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;abdta$uhatsq&amp;lt;-abdta$uhat^2
-bp&amp;lt;-lm(abdta$uhatsq~abdta$price+abdta$income+abdta$picket+abdta$funds); summary(bp)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-## Call:
-## lm(formula = abdta$uhatsq ~ abdta$price + abdta$income + abdta$picket + 
-##     abdta$funds)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -76.427 -32.878  -8.084  13.369 198.542 
-## 
-## Coefficients:
-##                Estimate Std. Error t value Pr(&amp;gt;|t|)  
-## (Intercept)  -81.516086  71.661327  -1.138   0.2613  
-## abdta$price    0.281716   0.166553   1.691   0.0977 .
-## abdta$income   0.003380   0.003223   1.049   0.3000  
-## abdta$picket  -0.618579   0.299618  -2.065   0.0448 *
-## abdta$funds   30.115592  20.574632   1.464   0.1502  
-## ---
-## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
-## 
-## Residual standard error: 54.03 on 45 degrees of freedom
-## Multiple R-squared:  0.2996, Adjusted R-squared:  0.2373 
-## F-statistic: 4.811 on 4 and 45 DF,  p-value: 0.002569&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# LM test (optional)
-rsq &amp;lt;- summary(bp)$r.squared
-nrsq = NROW(abdta$uhat)*rsq
-dfbp = bp$rank-1
-pchisq(nrsq, dfbp, ncp=0, lower.tail=FALSE, log.p=FALSE)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.004748088&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##Breusch-Pagan and Cook-Weisberg Tests
-bptest(base)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-##  studentized Breusch-Pagan test
-## 
-## data:  base
-## BP = 14.978, df = 4, p-value = 0.004748&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ncvTest(base)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Non-constant Variance Score Test 
-## Variance formula: ~ fitted.values 
-## Chisquare = 7.313688, Df = 1, p = 0.0068431&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#White Test (Alternative Method)
-abdta$yhatsq = (abdta$yhat)^2
-whitetest&amp;lt;-lm(uhatsq ~ yhat + yhatsq, abdta); summary(whitetest)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-## Call:
-## lm(formula = uhatsq ~ yhat + yhatsq, data = abdta)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -80.234 -33.560  -6.269  19.709 201.726 
-## 
-## Coefficients:
-##             Estimate Std. Error t value Pr(&amp;gt;|t|)
-## (Intercept)  7.11914   54.19278   0.131    0.896
-## yhat         0.05557    5.36354   0.010    0.992
-## yhatsq       0.07520    0.12438   0.605    0.548
-## 
-## Residual standard error: 57.93 on 47 degrees of freedom
-## Multiple R-squared:  0.1591, Adjusted R-squared:  0.1234 
-## F-statistic: 4.447 on 2 and 47 DF,  p-value: 0.01702&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;nr2 = NROW(whitetest$residuals)*summary(whitetest)$r.squared
-dfwhite = whitetest$rank-1
-pchisq(nr2, dfwhite, ncp=0, lower.tail=FALSE, log.p=FALSE)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.01871504&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# run r-script &amp;quot;white-test.R&amp;quot;
-white.test &amp;lt;- function(lmobj, squares.only=FALSE)
-{
-  stopifnot(class(lmobj)==&amp;#39;lm&amp;#39;)
-  mydata &amp;lt;- lmobj$model
-  mydata[,1] &amp;lt;- lmobj$residual^2
-  fml &amp;lt;- lmobj$call$formula
-  formula1 &amp;lt;- paste(fml[2],fml[1],fml[3])
-  pvs &amp;lt;- attr(lmobj$terms,&amp;quot;term.labels&amp;quot;)
-  k &amp;lt;- length(pvs);
-  n &amp;lt;- length(lmobj$fit)
-  
-  for(i in 1:k){
-    tmp &amp;lt;- NULL;
-    if(substr(pvs[i],1,2)==&amp;quot;I(&amp;quot;){
-      tmp2 &amp;lt;- substr(pvs[i],3, nchar(pvs[i])-1);
-    }else{
-      tmp2 &amp;lt;- pvs[i];
-    }
-    for(j in 1:nchar(tmp2)){
-      tmp1 &amp;lt;- substr(tmp2,j,j)
-      if(tmp1 == &amp;quot;:&amp;quot;)
-        tmp &amp;lt;- paste(tmp, &amp;quot;*&amp;quot;, sep=&amp;#39;&amp;#39;)
-      else
-        tmp &amp;lt;- paste(tmp, tmp1, sep=&amp;#39;&amp;#39;)
-    }
-    pvs[i] &amp;lt;- tmp
-  }
-  formula2 &amp;lt;- paste(fml[2],fml[1])
-  for(i in 1:k){
-    if(i&amp;gt;1)
-      formula2 &amp;lt;- paste(formula2, &amp;quot;+&amp;quot;, sep=&amp;#39;&amp;#39;)
-    formula2 &amp;lt;- paste(formula2, &amp;quot;I(&amp;quot;, pvs[i],&amp;quot;)&amp;quot;,sep=&amp;#39;&amp;#39;)
-    if(squares.only){
-      formula2 &amp;lt;- paste(formula2, &amp;quot;+I(&amp;quot;, pvs[i], 
-                        &amp;quot;*&amp;quot;, pvs[i], &amp;quot;)&amp;quot;, sep = &amp;quot;&amp;quot;)
-    }else{
-      for(j in i:k)
-        formula2 &amp;lt;- paste(formula2,&amp;quot;+I(&amp;quot;,pvs[i],
-                          &amp;quot;*&amp;quot;,pvs[j],&amp;quot;)&amp;quot;, sep=&amp;#39;&amp;#39;)
-    }
-  }
-  
-  method &amp;lt;- ifelse(squares.only,
-                   &amp;quot;White test for constant variance, squares only&amp;quot;,
-                   &amp;quot;White test for constant variance&amp;quot;)
-  
-  out &amp;lt;- lm(as.formula(formula2),data=mydata)
-  if(summary(out)$r.squared == 1.0){
-    RVAL &amp;lt;- NULL;
-    warning(&amp;quot;Test failed.  Possible reasons:\n\t (1) collinearity, or (2) sample size is not big enough for the White&amp;#39;s test.&amp;quot;);
-  }else{
-    LM = summary(out)$r.squared * n  
-    names(LM) &amp;lt;- &amp;quot;White&amp;quot;
-    df &amp;lt;- out$rank - 1
-    names(df) &amp;lt;- &amp;quot;df&amp;quot;;
-    RVAL &amp;lt;- list(statistic = LM,
-                 parameter = df,
-                 method = method,
-                 p.value= pchisq(LM,df,lower.tail=FALSE),
-                 data.name=NULL)
-    class(RVAL) &amp;lt;- &amp;quot;htest&amp;quot;
-  }
-  return(RVAL)
-}
-
-
-
-
-white.test(base)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-##  White test for constant variance
-## 
-## data:  
-## White = 22.922, df = 13, p-value = 0.04263&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rm(white.test)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;#B. Attempting to “fix” heteroskedasticity&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mdata &amp;lt;- merge(abdta, popdta, by=&amp;quot;state&amp;quot;)
-mdata$pop1990k &amp;lt;- mdata$pop1990/1000
-plot(mdata$pop1990k, mdata$uhat, pch=19); abline(h=0, col=&amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/trial/2020-09-04-trial2.en_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#FGLS
-mdata$pop1990ksq &amp;lt;- mdata$pop1990k^2
-mdata$uhatsq &amp;lt;- (mdata$uhat)^2
-fglsmod &amp;lt;- lm(mdata$uhatsq ~ mdata$pop1990k + mdata$pop1990ksq); summary(fglsmod)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-## Call:
-## lm(formula = mdata$uhatsq ~ mdata$pop1990k + mdata$pop1990ksq)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -56.819 -34.653 -13.247   8.788 221.276 
-## 
-## Coefficients:
-##                    Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept)       6.294e+01  1.474e+01   4.271 9.41e-05 ***
-## mdata$pop1990k   -8.345e-03  3.932e-03  -2.122  0.03912 *  
-## mdata$pop1990ksq  4.217e-07  1.559e-07   2.706  0.00947 ** 
-## ---
-## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
-## 
-## Residual standard error: 58.27 on 47 degrees of freedom
-## Multiple R-squared:  0.1492, Adjusted R-squared:  0.113 
-## F-statistic:  4.12 on 2 and 47 DF,  p-value: 0.02245&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mdata$wsq &amp;lt;- predict(fglsmod)
-mdata$w &amp;lt;- sqrt(mdata$wsq)
-mdata$one_w &amp;lt;- 1/mdata$w
-mdata$abortion_w &amp;lt;- mdata$abortion/mdata$w
-mdata$price_w &amp;lt;- mdata$price/mdata$w
-mdata$income_w &amp;lt;- mdata$income/mdata$w
-mdata$picket_w &amp;lt;- mdata$picket/mdata$w
-mdata$funds_w &amp;lt;- mdata$funds/mdata$w
-fglsmod.1 &amp;lt;- lm(abortion_w ~ one_w + price_w + income_w + picket_w + funds_w - 1, data=mdata);summary(fglsmod.1)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-## Call:
-## lm(formula = abortion_w ~ one_w + price_w + income_w + picket_w + 
-##     funds_w - 1, data = mdata)
-## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -1.44086 -0.77996 -0.02785  0.65345  2.35349 
-## 
-## Coefficients:
-##            Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## one_w    -0.6007669  8.6964198  -0.069  0.94523    
-## price_w  -0.0375035  0.0211244  -1.775  0.08260 .  
-## income_w  0.0019418  0.0003699   5.249    4e-06 ***
-## picket_w -0.1065614  0.0378695  -2.814  0.00723 ** 
-## funds_w   2.5590867  2.4201327   1.057  0.29597    
-## ---
-## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
-## 
-## Residual standard error: 1.01 on 45 degrees of freedom
-## Multiple R-squared:  0.9305, Adjusted R-squared:  0.9227 
-## F-statistic: 120.4 on 5 and 45 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fglsmod.2 &amp;lt;- lm(abortion_w ~ 0 + one_w + price_w + income_w + picket_w + funds_w, data=mdata);summary(fglsmod.2)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-## Call:
-## lm(formula = abortion_w ~ 0 + one_w + price_w + income_w + picket_w + 
-##     funds_w, data = mdata)
-## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -1.44086 -0.77996 -0.02785  0.65345  2.35349 
-## 
-## Coefficients:
-##            Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## one_w    -0.6007669  8.6964198  -0.069  0.94523    
-## price_w  -0.0375035  0.0211244  -1.775  0.08260 .  
-## income_w  0.0019418  0.0003699   5.249    4e-06 ***
-## picket_w -0.1065614  0.0378695  -2.814  0.00723 ** 
-## funds_w   2.5590867  2.4201327   1.057  0.29597    
-## ---
-## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
-## 
-## Residual standard error: 1.01 on 45 degrees of freedom
-## Multiple R-squared:  0.9305, Adjusted R-squared:  0.9227 
-## F-statistic: 120.4 on 5 and 45 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#WLS shortcut using &amp;quot;analytic weights&amp;quot; 
-wlsmod &amp;lt;- lm(abortion ~ price + income + picket + funds, data=mdata, weights = 1/wsq); summary(wlsmod)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-## Call:
-## lm(formula = abortion ~ price + income + picket + funds, data = mdata, 
-##     weights = 1/wsq)
-## 
-## Weighted Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -1.44086 -0.77996 -0.02785  0.65345  2.35349 
-## 
-## Coefficients:
-##               Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept) -0.6007669  8.6964198  -0.069  0.94523    
-## price       -0.0375035  0.0211244  -1.775  0.08260 .  
-## income       0.0019418  0.0003699   5.249    4e-06 ***
-## picket      -0.1065614  0.0378695  -2.814  0.00723 ** 
-## funds        2.5590867  2.4201327   1.057  0.29597    
-## ---
-## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
-## 
-## Residual standard error: 1.01 on 45 degrees of freedom
-## Multiple R-squared:  0.5456, Adjusted R-squared:  0.5052 
-## F-statistic: 13.51 on 4 and 45 DF,  p-value: 2.607e-07&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#Wooldridge&amp;#39;s WLS
-mdata$luhatsq &amp;lt;- log(mdata$uhatsq)
-wooldridge &amp;lt;- lm(luhatsq ~ price + income + picket + funds + pop1990k + pop1990ksq, data=mdata); summary(wooldridge)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-## Call:
-## lm(formula = luhatsq ~ price + income + picket + funds + pop1990k + 
-##     pop1990ksq, data = mdata)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -7.6635 -0.6789  0.3809  1.4745  3.7184 
-## 
-## Coefficients:
-##               Estimate Std. Error t value Pr(&amp;gt;|t|)  
-## (Intercept)  1.926e-01  3.320e+00   0.058   0.9540  
-## price        5.202e-03  8.374e-03   0.621   0.5378  
-## income       1.288e-04  1.642e-04   0.785   0.4370  
-## picket      -3.062e-02  1.402e-02  -2.183   0.0345 *
-## funds        7.818e-02  9.832e-01   0.080   0.9370  
-## pop1990k    -1.369e-04  1.912e-04  -0.716   0.4779  
-## pop1990ksq   7.113e-09  7.294e-09   0.975   0.3349  
-## ---
-## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
-## 
-## Residual standard error: 2.499 on 43 degrees of freedom
-## Multiple R-squared:  0.1967, Adjusted R-squared:  0.08461 
-## F-statistic: 1.755 on 6 and 43 DF,  p-value: 0.1315&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mdata$woolfit &amp;lt;- exp(wooldridge$fitted.values)
-mdata$wool.w = 1/mdata$woolfit
-wooldridge.wls&amp;lt;-lm(abortion~price+income+picket+funds, data=mdata, weights=mdata$wool.w);summary(wooldridge.wls)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-## Call:
-## lm(formula = abortion ~ price + income + picket + funds, data = mdata, 
-##     weights = mdata$wool.w)
-## 
-## Weighted Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -4.0858 -0.9771 -0.0352  1.2424  4.0267 
-## 
-## Coefficients:
-##               Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept)  5.8541736  6.9584084   0.841  0.40462    
-## price       -0.0535906  0.0179066  -2.993  0.00448 ** 
-## income       0.0016697  0.0003353   4.980 9.83e-06 ***
-## picket      -0.0539374  0.0337862  -1.596  0.11739    
-## funds        2.1618462  2.3946319   0.903  0.37145    
-## ---
-## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
-## 
-## Residual standard error: 1.907 on 45 degrees of freedom
-## Multiple R-squared:  0.5419, Adjusted R-squared:  0.5012 
-## F-statistic: 13.31 on 4 and 45 DF,  p-value: 3.101e-07&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#Robust Standard Errors
-lm.mod &amp;lt;- lm(abortion ~ price + income + picket + funds, data=mdata); summary(lm.mod)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-## Call:
-## lm(formula = abortion ~ price + income + picket + funds, data = mdata)
-## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -10.7819  -5.2738  -0.4338   4.2400  16.5978 
-## 
-## Coefficients:
-##               Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept) -2.2564210  9.2980030  -0.243   0.8094    
-## price       -0.0469599  0.0216102  -2.173   0.0351 *  
-## income       0.0021722  0.0004182   5.194 4.81e-06 ***
-## picket      -0.1023769  0.0388752  -2.633   0.0115 *  
-## funds        3.2519365  2.6695430   1.218   0.2295    
-## ---
-## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
-## 
-## Residual standard error: 7.011 on 45 degrees of freedom
-## Multiple R-squared:  0.5539, Adjusted R-squared:  0.5142 
-## F-statistic: 13.97 on 4 and 45 DF,  p-value: 1.746e-07&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;robse&amp;lt;-vcovHC(lm.mod, type=&amp;quot;HC1&amp;quot;); coeftest(lm.mod,robse)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-## t test of coefficients:
-## 
-##                Estimate  Std. Error t value  Pr(&amp;gt;|t|)    
-## (Intercept) -2.25642105 10.19181964 -0.2214   0.82579    
-## price       -0.04695987  0.02618162 -1.7936   0.07960 .  
-## income       0.00217224  0.00045171  4.8090 1.733e-05 ***
-## picket      -0.10237693  0.04191107 -2.4427   0.01857 *  
-## funds        3.25193647  3.00853040  1.0809   0.28550    
-## ---
-## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;robust&amp;lt;-hccm(lm.mod); coeftest(lm.mod,robust)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-## t test of coefficients:
-## 
-##                Estimate  Std. Error t value  Pr(&amp;gt;|t|)    
-## (Intercept) -2.25642105 11.87234167 -0.1901 0.8501193    
-## price       -0.04695987  0.03228109 -1.4547 0.1526879    
-## income       0.00217224  0.00050989  4.2602 0.0001028 ***
-## picket      -0.10237693  0.04917129 -2.0820 0.0430545 *  
-## funds        3.25193647  3.42510627  0.9494 0.3474678    
-## ---
-## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#log transformed dependent variable
-mdata$lnabortion &amp;lt;- log(mdata$abortion)
-log.mod &amp;lt;- lm(lnabortion ~ price + income + picket + funds, data=mdata); summary(log.mod)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-## Call:
-## lm(formula = lnabortion ~ price + income + picket + funds, data = mdata)
-## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -0.83928 -0.25514  0.01773  0.30740  0.59489 
-## 
-## Coefficients:
-##               Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept)  1.993e+00  4.648e-01   4.289 9.39e-05 ***
-## price       -3.330e-03  1.080e-03  -3.082  0.00350 ** 
-## income       1.145e-04  2.091e-05   5.478 1.84e-06 ***
-## picket      -5.708e-03  1.943e-03  -2.937  0.00521 ** 
-## funds        1.028e-01  1.335e-01   0.770  0.44537    
-## ---
-## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
-## 
-## Residual standard error: 0.3505 on 45 degrees of freedom
-## Multiple R-squared:  0.568,  Adjusted R-squared:  0.5296 
-## F-statistic: 14.79 on 4 and 45 DF,  p-value: 8.671e-08&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(log.mod$fitted.values, log.mod$residuals, pch = 19); abline(h=0, col = &amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/trial/2020-09-04-trial2.en_files/figure-html/unnamed-chunk-4-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(mdata$pop1990k, log.mod$residuals, pch = 19); abline(h=0, col = &amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/trial/2020-09-04-trial2.en_files/figure-html/unnamed-chunk-4-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;bptest(log.mod)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-##  studentized Breusch-Pagan test
-## 
-## data:  log.mod
-## BP = 5.836, df = 4, p-value = 0.2117&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Trial</title>
-      <link>/post/trial/trial/</link>
-      <pubDate>Thu, 03 Sep 2020 00:00:00 +0000</pubDate>
-      <guid>/post/trial/trial/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;/featured.jpeg&#34; alt=&#34;dddd&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;The Objectives:&lt;/strong&gt; The objectives are to practice methods for diagnosing and resolving the problem of non-constant error variance, also known as heteroskedasticity. There exist other, simpler methods for both tasks, but they were designed for (and are most easily implemented in) bivariate regression; we will focus instead on methods that are applicable to multivariate regression&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-{r,&#34;&gt;library(car)
-library(haven)
-library(foreign)
-library(lmtest)
-library(sandwich)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code class=&#34;language-{r,&#34;&gt;abdta&amp;lt;-read.dta(&amp;quot;/abortions.dta&amp;quot;)
-popdta&amp;lt;- read_dta(&amp;quot;/populations.dta&amp;quot;)
-base&amp;lt;-lm(abortion~price+income+picket+funds, data=abdta);summary(base)
-avPlots(base, pch = 19)
-plot(base)
-abdta$uhat&amp;lt;-base$residuals; abdta$yhat&amp;lt;-base$fitted.values
-plot(abdta$income, abdta$yhat); abline(lm(yhat~income, abdta))
-plot(abdta$income, abdta$uhat); abline(h=0, col=&amp;quot;red&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Election Accomplished: Democracies and the Timing of Peacekeeper Drawdowns</title>
       <link>/publication/journal-article/</link>
       <pubDate>Wed, 01 Jul 2020 00:00:00 +0000</pubDate>
@@ -543,10 +85,236 @@ plot(abdta$income, abdta$uhat); abline(h=0, col=&amp;quot;red&amp;quot;)
     </item>
     
     <item>
-      <title>Writing technical content in Academic</title>
+      <title>Sample Lab Session</title>
       <link>/post/writing-technical-content/</link>
       <pubDate>Fri, 12 Jul 2019 00:00:00 +0000</pubDate>
       <guid>/post/writing-technical-content/</guid>
+      <description>&lt;p&gt;On this page, you&amp;rsquo;ll find an example of the labs from Quantitative Methods I class, taught at University of Houston, Fall 2019. Feel free to use the R codes and practice on your own.&lt;/p&gt;
+&lt;h3 id=&#34;lab-01---quantitative-methods-i---fall-2019&#34;&gt;Lab 01 - Quantitative Methods I - Fall 2019&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;I. Objectives:&lt;/strong&gt;
+To familiarize students with R and R Studio. Students will use the calculator functions of R, create a data frame, load a dataset, and create some plots.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Datasets:&lt;/strong&gt;
+“palmbeach.csv” contains votes for every presidential candidate in the 2000 election, for every county in Florida.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Packages:&lt;/strong&gt;
+None&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;instructions-&#34;&gt;Instructions:&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;The commands that you want to execute are typed on &amp;ldquo;R Console&amp;rdquo;. Here are some examples:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{R}&#34;&gt;2*3
+2^3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;R can be used as a simple calculator for addition, subtraction, multiplication, and division using the standard operators +, -, *, and /, respectively. You can use parentheses to group operations, and use the ^ symbol to raise a number to a higher power. R also calculates for natural exponent (e.g., &amp;gt; exp(1)) and the natural logarithm (e.g., &amp;gt; log(2.718)).&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;log(2.718)
+exp(1)
+log(50, base = 10)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Using the R console effectively will require storing data by associating values with names, which can then be used in place of numbers to complete calculations. Values can be assigned to variables using one of three operators: &lt;code&gt;&amp;lt;-, =, and -&amp;gt;&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{r}&#34;&gt;x &amp;lt;- 2
+y = 4
+x
+y
+x^3
+y^3
+sqrt(x)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;R stores data in vectors, which are simply ordered lists of numbers stored under a single name. A vector is created by using the &lt;code&gt;c() command&lt;/code&gt;; in between the parentheses you will list the values of the variable. For instance, we can create a vector of the first six unique terms of the fibonnacci sequence and another with first six odd prime numbers.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{r}&#34;&gt;fib &amp;lt;- c(1, 2, 3, 5, 8, 13)
+pri &amp;lt;- c(1, 3, 5, 7, 11, 13)
+fib
+pri
+fib[3] #to extract just the third element of either variable
+pri[6] #to extract just the sixth element of either variable
+sum(fib) #sum of the list of values
+sum(pri) #sum of the list of values
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;R has a more complex data structure, which you will use often, called a data frame. A data frame can be thought of as a spreadsheet: different columns represent the different variables in the data frame, and each row represents the values for a particular unit. We can combine our two variables (fib and pri) into a data frame by &lt;code&gt;binding&lt;/code&gt; the vectors together by typing:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{r}&#34;&gt;data &amp;lt;- cbind(fib, pri)
+data
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Now we’re going to work with a dataset. But, first we should clean the global environment. Let&amp;rsquo;s remove the data we created, typing &lt;code&gt;remove(data)&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The data that we are going to work on is called &lt;code&gt;palmbeach.csv&lt;/code&gt;. You can import it from my Github page. See the code to import below.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{r,&#34;&gt;library(readr)
+palmbeach &amp;lt;- read_csv(&amp;quot;https://raw.githubusercontent.com/burakgiray/data/master/PalmBeach.csv&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;The dataset should open directly. If it does not, type &lt;code&gt;view(palmbeach)&lt;/code&gt;. We can also examine the variable names, typing &lt;code&gt;names(palmbeach)&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;R allows us to have multiple data frames open simultaneously, which is an advantage compared to Stata. However, we have to tell R which data frame to which we are referring. We can make a data frame active by typing &lt;code&gt;attach(palmbeach)&lt;/code&gt;. Alternatively, one can also type &lt;code&gt;[dataframe]$[variable]&lt;/code&gt; to select a particular variable from a particular data frame.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If you remember your history, in 2000 there were concerns that the &lt;code&gt;Butterfly Ballot&lt;/code&gt; led to voter confusion in Palm Beach county, and many residents of that county incorrectly cast votes for Pat Buchanan rather than Al Gore. To create the percentage of votes cast for Pat Buchanan in each county, go to the Console window and type the following:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{r}&#34;&gt;palmbeach$bs &amp;lt;- 100*palmbeach$BUCHANAN/palmbeach$VOTES
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We have created a new variable, named bs, inside the palmbeach dataframe. If you look at the Environment tab, it should now tell you that there are 67 obs. for 28 variables. Suppose you wanted to examine the new variable. If you simply type the name of the variable (bs), RStudio might give you an error message. You need to either attach the data frame or type the full name of the variable &lt;code&gt;palmbeach$bs&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{r}&#34;&gt;summary(palmbeach$bs) #To see the summary statistics of bs
+boxplot(palmbeach$bs,horizontal=T) #To see a box-and-whisker plot
+stem(palmbeach$bs,scale=2) #To see a stem-and-leaf plot
+hist(palmbeach$bs,prob=T) #To see a histogram
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Writing technical content in Academic</title>
+      <link>/post/lab/sample/</link>
+      <pubDate>Fri, 12 Jul 2019 00:00:00 +0000</pubDate>
+      <guid>/post/lab/sample/</guid>
+      <description>
+
+
+&lt;p&gt;On this page, you’ll find an example of the labs from Quantitative Methods I, taught in Fall 2019. Feel free to use the R codes and practice on your own.&lt;/p&gt;
+&lt;div id=&#34;lab-01---quantitative-methods-i---fall-2019&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Lab 01 - Quantitative Methods I - Fall 2019&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;I. Objectives:&lt;/strong&gt;
+To familiarize students with R and R Studio. Students will use the calculator functions of R, create a data frame, load a dataset, and create some plots.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Datasets:&lt;/strong&gt;
+“palmbeach.csv” contains votes for every presidential candidate in the 2000 election, for every county in Florida.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Packages:&lt;/strong&gt;
+None&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div id=&#34;instructions&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Instructions:&lt;/h4&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;The commands that you want to execute are typed on “R Console”. Here are some examples:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;2*3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 6&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;2^3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 8&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;R can be used as a simple calculator for addition, subtraction, multiplication, and division using the standard operators +, -, *, and /, respectively. You can use parentheses to group operations, and use the ^ symbol to raise a number to a higher power. R also calculates for natural exponent (e.g., &amp;gt; exp(1)) and the natural logarithm (e.g., &amp;gt; log(2.718)).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;log(2.718)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.9998963&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;exp(1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 2.718282&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;log(50, base = 10)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 1.69897&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Using the R console effectively will require storing data by associating values with names, which can then be used in place of numbers to complete calculations. Values can be assigned to variables using one of three operators: &lt;code&gt;&amp;lt;-, =, and -&amp;gt;&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- 2
+y = 4
+x&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;y&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 4&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x^3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 8&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;y^3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 64&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sqrt(x)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 1.414214&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;R stores data in vectors, which are simply ordered lists of numbers stored under a single name. A vector is created by using the &lt;code&gt;c() command&lt;/code&gt;; in between the parentheses you will list the values of the variable. For instance, we can create a vector of the first six unique terms of the fibonnacci sequence and another with first six odd prime numbers.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fib &amp;lt;- c(1, 2, 3, 5, 8, 13)
+pri &amp;lt;- c(1, 3, 5, 7, 11, 13)
+fib&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1]  1  2  3  5  8 13&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;pri&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1]  1  3  5  7 11 13&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fib[3] #to extract just the third element of either variable&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;pri[6] #to extract just the sixth element of either variable&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 13&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sum(fib) #sum of the list of values&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 32&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sum(pri) #sum of the list of values&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 40&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;R has a more complex data structure, which you will use often, called a data frame. A data frame can be thought of as a spreadsheet: different columns represent the different variables in the data frame, and each row represents the values for a particular unit. We can combine our two variables (fib and pri) into a data frame by &lt;code&gt;binding&lt;/code&gt; the vectors together by typing:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data &amp;lt;- cbind(fib, pri)
+data&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      fib pri
+## [1,]   1   1
+## [2,]   2   3
+## [3,]   3   5
+## [4,]   5   7
+## [5,]   8  11
+## [6,]  13  13&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;5&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Now we’re going to work with a dataset. But, first we should clean the global environment. Let’s remove the data we created, typing &lt;code&gt;remove(data)&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The data that we are going to work on is called &lt;code&gt;palmbeach.csv&lt;/code&gt;. You can import it from my Github page. See the code to import below.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(readr)
+palmbeach &amp;lt;- read_csv(&amp;quot;https://raw.githubusercontent.com/burakgiray/data/master/PalmBeach.csv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;7&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;The dataset should open directly. If it does not, type &lt;code&gt;view(palmbeach)&lt;/code&gt;. We can also examine the variable names, typing &lt;code&gt;names(palmbeach)&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;R allows us to have multiple data frames open simultaneously, which is an advantage compared to Stata. However, we have to tell R which data frame to which we are referring. We can make a data frame active by typing &lt;code&gt;attach(palmbeach)&lt;/code&gt;. Alternatively, one can also type &lt;code&gt;[dataframe]$[variable]&lt;/code&gt; to select a particular variable from a particular data frame.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;If you remember your history, in 2000 there were concerns that the &lt;code&gt;Butterfly Ballot&lt;/code&gt; led to voter confusion in Palm Beach county, and many residents of that county incorrectly cast votes for Pat Buchanan rather than Al Gore. To create the percentage of votes cast for Pat Buchanan in each county, go to the Console window and type the following:&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;palmbeach$bs &amp;lt;- 100*palmbeach$BUCHANAN/palmbeach$VOTES&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We have created a new variable, named bs, inside the palmbeach dataframe. If you look at the Environment tab, it should now tell you that there are 67 obs. for 28 variables. Suppose you wanted to examine the new variable. If you simply type the name of the variable (bs), RStudio might give you an error message. You need to either attach the data frame or type the full name of the variable &lt;code&gt;palmbeach$bs&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(palmbeach$bs) #To see the summary statistics of bs&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+## 0.04653 0.13089 0.20020 0.24003 0.28179 0.89534&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;boxplot(palmbeach$bs,horizontal=T) #To see a box-and-whisker plot&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/lab/sample_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;stem(palmbeach$bs,scale=2) #To see a stem-and-leaf plot&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+##   The decimal point is 1 digit(s) to the left of the |
+## 
+##   0 | 
+##   0 | 57777888
+##   1 | 001122333333344
+##   1 | 666669999
+##   2 | 000112244444
+##   2 | 56778899
+##   3 | 1224
+##   3 | 67
+##   4 | 03
+##   4 | 6
+##   5 | 4
+##   5 | 568
+##   6 | 
+##   6 | 
+##   7 | 
+##   7 | 
+##   8 | 2
+##   8 | 
+##   9 | 0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;hist(palmbeach$bs,prob=T) #To see a histogram&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/lab/sample_files/figure-html/unnamed-chunk-8-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Suppose you wanted to save your work for the future. The best way to do this is with a script. If you click on the icon with the green plus-sign, the first option it gives you is an R script. You can also type &lt;code&gt;Ctrl-Shift-N&lt;/code&gt;. If you click on R script, it will create a new script, most likely named Untitled1, into which you can paste commands from the Console window.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;did-you-find-this-page-helpful-consider-sharing-it&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Did you find this page helpful? Consider sharing it 🙌&lt;/h3&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Writing technical content in Academic</title>
+      <link>/post/writing-technical-content-copy/</link>
+      <pubDate>Fri, 12 Jul 2019 00:00:00 +0000</pubDate>
+      <guid>/post/writing-technical-content-copy/</guid>
       <description>&lt;p&gt;Academic is designed to give technical content creators a seamless experience. You can focus on the content and Academic handles the rest.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Highlight your code snippets, take notes on math classes, and draw diagrams from textual representation.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;On this page, you&amp;rsquo;ll find some examples of the types of technical content that can be rendered with Academic.&lt;/p&gt;

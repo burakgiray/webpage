@@ -33,21 +33,6 @@
   </url>
   
   <url>
-    <loc>/post/</loc>
-    <lastmod>2020-09-04T00:18:56-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/trial/trial2/</loc>
-    <lastmod>2020-09-04T00:18:56-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/trial/trial/</loc>
-    <lastmod>2020-09-03T23:47:02-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/publication-type/2/</loc>
     <lastmod>2020-07-01T00:00:00+00:00</lastmod>
   </url>
@@ -83,7 +68,22 @@
   </url>
   
   <url>
+    <loc>/post/</loc>
+    <lastmod>2019-07-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/writing-technical-content/</loc>
+    <lastmod>2019-07-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/lab/sample/</loc>
+    <lastmod>2019-07-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/writing-technical-content-copy/</loc>
     <lastmod>2019-07-12T00:00:00+00:00</lastmod>
   </url>
   

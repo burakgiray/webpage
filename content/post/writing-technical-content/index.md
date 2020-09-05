@@ -2,295 +2,101 @@
 date: "2019-07-12"
 diagram: true
 image:
-  caption: 'Image credit: [**John Moeses Bauan**](https://unsplash.com/photos/OGZtQF8iC0g)'
+  caption: 'Image credit: [**Safar Safarov**](https://unsplash.com/photos/MSN8TFhJ0is)'
   placement: 3
 math: true
-title: Writing technical content in Academic
----
+title: Sample Lab Session
+--- 
 
-Academic is designed to give technical content creators a seamless experience. You can focus on the content and Academic handles the rest.
+ 
+ 
+On this page, you'll find an example of the labs from Quantitative Methods I class, taught at University of Houston, Fall 2019. Feel free to use the R codes and practice on your own.  
 
-**Highlight your code snippets, take notes on math classes, and draw diagrams from textual representation.**
+### Lab 01 - Quantitative Methods I - Fall 2019
 
-On this page, you'll find some examples of the types of technical content that can be rendered with Academic.
++ **I. Objectives:** 
+To familiarize students with R and R Studio. Students will use the calculator functions of R, create a data frame, load a dataset, and create some plots.
 
-## Examples
++ **Datasets:**
+“palmbeach.csv” contains votes for every presidential candidate in the 2000 election, for every county in Florida.
 
-### Code
++ **Packages:**
+None
+ 
+#### Instructions: ####
 
-Academic supports a Markdown extension for highlighting code syntax. You can enable this feature by toggling the `highlight` option in your `config/_default/params.toml` file.
+1. The commands that you want to execute are typed on "R Console". Here are some examples:
 
-    ```python
-    import pandas as pd
-    data = pd.read_csv("data.csv")
-    data.head()
-    ```
-
-renders as
-
-```python
-import pandas as pd
-data = pd.read_csv("data.csv")
-data.head()
+```{R}
+2*3
+2^3
 ```
 
-### Math
 
-Academic supports a Markdown extension for $\LaTeX$ math. You can enable this feature by toggling the `math` option in your `config/_default/params.toml` file.
+R can be used as a simple calculator for addition, subtraction, multiplication, and division using the standard operators +, -, *, and /, respectively. You can use parentheses to group operations, and use the ^ symbol to raise a number to a higher power. R also calculates for natural exponent (e.g., > exp(1)) and the natural logarithm (e.g., > log(2.718)). 
 
-To render *inline* or *block* math, wrap your LaTeX math with `$...$` or `$$...$$`, respectively.
+```r
+log(2.718)
+exp(1)
+log(50, base = 10)
+``` 
 
-Example **math block**:
+2. Using the R console effectively will require storing data by associating values with names, which can then be used in place of numbers to complete calculations. Values can be assigned to variables using one of three operators: `<-, =, and ->`. 
 
-```tex
-$$\gamma_{n} = \frac{ 
-\left | \left (\mathbf x_{n} - \mathbf x_{n-1} \right )^T 
-\left [\nabla F (\mathbf x_{n}) - \nabla F (\mathbf x_{n-1}) \right ] \right |}
-{\left \|\nabla F(\mathbf{x}_{n}) - \nabla F(\mathbf{x}_{n-1}) \right \|^2}$$
+```{r}
+x <- 2
+y = 4
+x
+y
+x^3
+y^3
+sqrt(x)
+``` 
+
+3. R stores data in vectors, which are simply ordered lists of numbers stored under a single name. A vector is created by using the `c() command`; in between the parentheses you will list the values of the variable. For instance, we can create a vector of the first six unique terms of the fibonnacci sequence and another with first six odd prime numbers.
+
+```{r}
+fib <- c(1, 2, 3, 5, 8, 13)
+pri <- c(1, 3, 5, 7, 11, 13)
+fib
+pri
+fib[3] #to extract just the third element of either variable
+pri[6] #to extract just the sixth element of either variable
+sum(fib) #sum of the list of values
+sum(pri) #sum of the list of values
+``` 
+
+4. R has a more complex data structure, which you will use often, called a data frame. A data frame can be thought of as a spreadsheet: different columns represent the different variables in the data frame, and each row represents the values for a particular unit. We can combine our two variables (fib and pri) into a data frame by `binding` the vectors together by typing:
+
+```{r}
+data <- cbind(fib, pri)
+data
 ```
 
-renders as
+5. Now we’re going to work with a dataset. But, first we should clean the global environment. Let's remove the data we created, typing `remove(data)`. 
 
-$$\gamma_{n} = \frac{ \left | \left (\mathbf x_{n} - \mathbf x_{n-1} \right )^T \left [\nabla F (\mathbf x_{n}) - \nabla F (\mathbf x_{n-1}) \right ] \right |}{\left \|\nabla F(\mathbf{x}_{n}) - \nabla F(\mathbf{x}_{n-1}) \right \|^2}$$
+6. The data that we are going to work on is called `palmbeach.csv`. You can import it from my Github page. See the code to import below. 
 
-Example **inline math** `$\nabla F(\mathbf{x}_{n})$` renders as $\nabla F(\mathbf{x}_{n})$.
-
-Example **multi-line math** using the `\\\\` math linebreak:
-
-```tex
-$$f(k;p_0^*) = \begin{cases} p_0^* & \text{if }k=1, \\\\
-1-p_0^* & \text {if }k=0.\end{cases}$$
+```{r, warning=FALSE, message=FALSE}
+library(readr)
+palmbeach <- read_csv("https://raw.githubusercontent.com/burakgiray/data/master/PalmBeach.csv")
 ```
 
-renders as
+7. The dataset should open directly. If it does not, type `view(palmbeach)`. We can also examine the variable names, typing `names(palmbeach)`.
 
-$$f(k;p_0^*) = \begin{cases} p_0^* & \text{if }k=1, \\\\
-1-p_0^* & \text {if }k=0.\end{cases}$$
+8. R allows us to have multiple data frames open simultaneously, which is an advantage compared to Stata. However, we have to tell R which data frame to which we are referring. We can make a data frame active by typing `attach(palmbeach)`. Alternatively, one can also type `[dataframe]$[variable]` to select a particular variable from a particular data frame. 
 
-### Diagrams
+9. If you remember your history, in 2000 there were concerns that the `Butterfly Ballot` led to voter confusion in Palm Beach county, and many residents of that county incorrectly cast votes for Pat Buchanan rather than Al Gore. To create the percentage of votes cast for Pat Buchanan in each county, go to the Console window and type the following:
 
-Academic supports a Markdown extension for diagrams. You can enable this feature by toggling the `diagram` option in your `config/_default/params.toml` file or by adding `diagram: true` to your page front matter.
-
-An example **flowchart**:
-
-    ```mermaid
-    graph TD
-    A[Hard] -->|Text| B(Round)
-    B --> C{Decision}
-    C -->|One| D[Result 1]
-    C -->|Two| E[Result 2]
-    ```
-
-renders as
-
-```mermaid
-graph TD
-A[Hard] -->|Text| B(Round)
-B --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
+```{r}
+palmbeach$bs <- 100*palmbeach$BUCHANAN/palmbeach$VOTES
 ```
 
-An example **sequence diagram**:
+We have created a new variable, named bs, inside the palmbeach dataframe. If you look at the Environment tab, it should now tell you that there are 67 obs. for 28 variables. Suppose you wanted to examine the new variable. If you simply type the name of the variable (bs), RStudio might give you an error message. You need to either attach the data frame or type the full name of the variable `palmbeach$bs`.
 
-    ```mermaid
-    sequenceDiagram
-    Alice->>John: Hello John, how are you?
-    loop Healthcheck
-        John->>John: Fight against hypochondria
-    end
-    Note right of John: Rational thoughts!
-    John-->>Alice: Great!
-    John->>Bob: How about you?
-    Bob-->>John: Jolly good!
-    ```
-
-renders as
-
-```mermaid
-sequenceDiagram
-Alice->>John: Hello John, how are you?
-loop Healthcheck
-    John->>John: Fight against hypochondria
-end
-Note right of John: Rational thoughts!
-John-->>Alice: Great!
-John->>Bob: How about you?
-Bob-->>John: Jolly good!
+```{r}
+summary(palmbeach$bs) #To see the summary statistics of bs
+boxplot(palmbeach$bs,horizontal=T) #To see a box-and-whisker plot
+stem(palmbeach$bs,scale=2) #To see a stem-and-leaf plot
+hist(palmbeach$bs,prob=T) #To see a histogram
 ```
-
-An example **Gantt diagram**:
-
-    ```mermaid
-    gantt
-    section Section
-    Completed :done,    des1, 2014-01-06,2014-01-08
-    Active        :active,  des2, 2014-01-07, 3d
-    Parallel 1   :         des3, after des1, 1d
-    Parallel 2   :         des4, after des1, 1d
-    Parallel 3   :         des5, after des3, 1d
-    Parallel 4   :         des6, after des4, 1d
-    ```
-
-renders as
-
-```mermaid
-gantt
-section Section
-Completed :done,    des1, 2014-01-06,2014-01-08
-Active        :active,  des2, 2014-01-07, 3d
-Parallel 1   :         des3, after des1, 1d
-Parallel 2   :         des4, after des1, 1d
-Parallel 3   :         des5, after des3, 1d
-Parallel 4   :         des6, after des4, 1d
-```
-
-An example **class diagram**:
-
-    ```mermaid
-    classDiagram
-    Class01 <|-- AveryLongClass : Cool
-    <<interface>> Class01
-    Class09 --> C2 : Where am i?
-    Class09 --* C3
-    Class09 --|> Class07
-    Class07 : equals()
-    Class07 : Object[] elementData
-    Class01 : size()
-    Class01 : int chimp
-    Class01 : int gorilla
-    class Class10 {
-      <<service>>
-      int id
-      size()
-    }
-    ```
-
-renders as
-
-```mermaid
-classDiagram
-Class01 <|-- AveryLongClass : Cool
-<<interface>> Class01
-Class09 --> C2 : Where am i?
-Class09 --* C3
-Class09 --|> Class07
-Class07 : equals()
-Class07 : Object[] elementData
-Class01 : size()
-Class01 : int chimp
-Class01 : int gorilla
-class Class10 {
-  <<service>>
-  int id
-  size()
-}
-```
-
-An example **state diagram**:
-
-    ```mermaid
-    stateDiagram
-    [*] --> Still
-    Still --> [*]
-    Still --> Moving
-    Moving --> Still
-    Moving --> Crash
-    Crash --> [*]
-    ```
-
-renders as
-
-```mermaid
-stateDiagram
-[*] --> Still
-Still --> [*]
-Still --> Moving
-Moving --> Still
-Moving --> Crash
-Crash --> [*]
-```
-
-### Todo lists
-
-You can even write your todo lists in Academic too:
-
-```markdown
-- [x] Write math example
-- [x] Write diagram example
-- [ ] Do something else
-```
-
-renders as
-
-- [x] Write math example
-- [x] Write diagram example
-- [ ] Do something else
-
-### Tables
-
-Represent your data in tables:
-
-```markdown
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
-```
-
-renders as
-
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
-
-### Asides
-
-Academic supports a [shortcode for asides](https://sourcethemes.com/academic/docs/writing-markdown-latex/#alerts), also referred to as *notices*, *hints*, or *alerts*. By wrapping a paragraph in `{{%/* alert note */%}} ... {{%/* /alert */%}}`, it will render as an aside.
-
-```markdown
-{{%/* alert note */%}}
-A Markdown aside is useful for displaying notices, hints, or definitions to your readers.
-{{%/* /alert */%}}
-```
-
-renders as
-
-{{% alert note %}}
-A Markdown aside is useful for displaying notices, hints, or definitions to your readers.
-{{% /alert %}}
-
-### Spoilers
-
-Add a spoiler to a page to reveal text, such as an answer to a question, after a button is clicked.
-
-```markdown
-{{</* spoiler text="Click to view the spoiler" */>}}
-You found me!
-{{</* /spoiler */>}}
-```
-
-renders as
-
-{{< spoiler text="Click to view the spoiler" >}} You found me! {{< /spoiler >}}
-
-### Icons
-
-Academic enables you to use a wide range of [icons from _Font Awesome_ and _Academicons_](https://sourcethemes.com/academic/docs/page-builder/#icons) in addition to [emojis](https://sourcethemes.com/academic/docs/writing-markdown-latex/#emojis).
-
-Here are some examples using the `icon` shortcode to render icons:
-
-```markdown
-{{</* icon name="terminal" pack="fas" */>}} Terminal  
-{{</* icon name="python" pack="fab" */>}} Python  
-{{</* icon name="r-project" pack="fab" */>}} R
-```
-
-renders as
-
-{{< icon name="terminal" pack="fas" >}} Terminal  
-{{< icon name="python" pack="fab" >}} Python  
-{{< icon name="r-project" pack="fab" >}} R
-
-### Did you find this page helpful? Consider sharing it 🙌
