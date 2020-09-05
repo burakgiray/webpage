@@ -7,7 +7,7 @@
     <description>Burak Giray</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020</copyright><lastBuildDate>Wed, 01 Jul 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/author/burak-giray/avatar_hud73719055d6225809aa45455c0cd7fb5_573646_270x270_fill_q90_lanczos_center.jpg</url>
+      <url>/author/burak-giray/avatar%202_hud73719055d6225809aa45455c0cd7fb5_573646_270x270_fill_q90_lanczos_center.jpg</url>
       <title>Burak Giray</title>
       <link>/author/burak-giray/</link>
     </image>
@@ -26,6 +26,15 @@
       <pubDate>Sun, 07 Apr 2019 00:00:00 +0000</pubDate>
       <guid>/publication/preprint/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>Burak Giray</title>
+      <link>/author/burak-giray/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/author/burak-giray/</guid>
+      <description>&lt;p&gt;Welcome to my page! I am a Ph.D. candidate in the Department of Political Science at the University of Houston. My major field is International Relations and my research interests include the composition of UN peacekeepers, effectiveness of peacekeeping missions, supply-side of peacekeeping and peace settlements.&lt;/p&gt;
+</description>
     </item>
     
   </channel>
