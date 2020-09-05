@@ -9,7 +9,7 @@ title: Sample Lab Session
 --- 
 
  
- 
+
 On this page, you'll find an example of the labs from Quantitative Methods I class, taught at University of Houston, Fall 2019. Feel free to use the R codes and practice on your own.  
 
 ### Lab 01 - Quantitative Methods I - Fall 2019
@@ -99,4 +99,5 @@ summary(palmbeach$bs) #To see the summary statistics of bs
 boxplot(palmbeach$bs,horizontal=T) #To see a box-and-whisker plot
 stem(palmbeach$bs,scale=2) #To see a stem-and-leaf plot
 hist(palmbeach$bs,prob=T) #To see a histogram
-```
+``` 
+You can see the solutions for the R codes [here](https://www.burakgiray.com/post/lab/sample/).

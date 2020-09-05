@@ -1,45 +1,37 @@
 ---
-date: "2019-07-12"
-diagram: true
-image:
-  caption: 'Image credit: [**John Moeses Bauan**](https://unsplash.com/photos/OGZtQF8iC0g)'
-  placement: 3
-math: true
-title: Writing technical content in Academic
+title: Solutions for the Lab Session
+author: admin
+date: '2020-09-04'
+slug: sample
+categories: []
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2020-09-04T15:33:57-05:00'
+featured: true
+image: 
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []  
 ---
 
 
 
-<p>On this page, you’ll find an example of the labs from Quantitative Methods I, taught in Fall 2019. Feel free to use the R codes and practice on your own.</p>
-<div id="lab-01---quantitative-methods-i---fall-2019" class="section level3">
-<h3>Lab 01 - Quantitative Methods I - Fall 2019</h3>
-<ul>
-<li><p><strong>I. Objectives:</strong>
-To familiarize students with R and R Studio. Students will use the calculator functions of R, create a data frame, load a dataset, and create some plots.</p></li>
-<li><p><strong>Datasets:</strong>
-“palmbeach.csv” contains votes for every presidential candidate in the 2000 election, for every county in Florida.</p></li>
-<li><p><strong>Packages:</strong>
-None</p></li>
-</ul>
-<div id="instructions" class="section level4">
-<h4>Instructions:</h4>
-<ol style="list-style-type: decimal">
-<li>The commands that you want to execute are typed on “R Console”. Here are some examples:</li>
-</ol>
+<p>Here you can find the solutions for the R codes given in <code>Sample Lab Session</code> post. I hope the sample has been useful.</p>
+<div id="solutions" class="section level3">
+<h3>Solutions:</h3>
 <pre class="r"><code>2*3</code></pre>
 <pre><code>## [1] 6</code></pre>
 <pre class="r"><code>2^3</code></pre>
 <pre><code>## [1] 8</code></pre>
-<p>R can be used as a simple calculator for addition, subtraction, multiplication, and division using the standard operators +, -, *, and /, respectively. You can use parentheses to group operations, and use the ^ symbol to raise a number to a higher power. R also calculates for natural exponent (e.g., &gt; exp(1)) and the natural logarithm (e.g., &gt; log(2.718)).</p>
 <pre class="r"><code>log(2.718)</code></pre>
 <pre><code>## [1] 0.9998963</code></pre>
 <pre class="r"><code>exp(1)</code></pre>
 <pre><code>## [1] 2.718282</code></pre>
 <pre class="r"><code>log(50, base = 10)</code></pre>
 <pre><code>## [1] 1.69897</code></pre>
-<ol start="2" style="list-style-type: decimal">
-<li>Using the R console effectively will require storing data by associating values with names, which can then be used in place of numbers to complete calculations. Values can be assigned to variables using one of three operators: <code>&lt;-, =, and -&gt;</code>.</li>
-</ol>
 <pre class="r"><code>x &lt;- 2
 y = 4
 x</code></pre>
@@ -52,9 +44,6 @@ x</code></pre>
 <pre><code>## [1] 64</code></pre>
 <pre class="r"><code>sqrt(x)</code></pre>
 <pre><code>## [1] 1.414214</code></pre>
-<ol start="3" style="list-style-type: decimal">
-<li>R stores data in vectors, which are simply ordered lists of numbers stored under a single name. A vector is created by using the <code>c() command</code>; in between the parentheses you will list the values of the variable. For instance, we can create a vector of the first six unique terms of the fibonnacci sequence and another with first six odd prime numbers.</li>
-</ol>
 <pre class="r"><code>fib &lt;- c(1, 2, 3, 5, 8, 13)
 pri &lt;- c(1, 3, 5, 7, 11, 13)
 fib</code></pre>
@@ -69,9 +58,6 @@ fib</code></pre>
 <pre><code>## [1] 32</code></pre>
 <pre class="r"><code>sum(pri) #sum of the list of values</code></pre>
 <pre><code>## [1] 40</code></pre>
-<ol start="4" style="list-style-type: decimal">
-<li>R has a more complex data structure, which you will use often, called a data frame. A data frame can be thought of as a spreadsheet: different columns represent the different variables in the data frame, and each row represents the values for a particular unit. We can combine our two variables (fib and pri) into a data frame by <code>binding</code> the vectors together by typing:</li>
-</ol>
 <pre class="r"><code>data &lt;- cbind(fib, pri)
 data</code></pre>
 <pre><code>##      fib pri
@@ -81,19 +67,9 @@ data</code></pre>
 ## [4,]   5   7
 ## [5,]   8  11
 ## [6,]  13  13</code></pre>
-<ol start="5" style="list-style-type: decimal">
-<li><p>Now we’re going to work with a dataset. But, first we should clean the global environment. Let’s remove the data we created, typing <code>remove(data)</code>.</p></li>
-<li><p>The data that we are going to work on is called <code>palmbeach.csv</code>. You can import it from my Github page. See the code to import below.</p></li>
-</ol>
 <pre class="r"><code>library(readr)
 palmbeach &lt;- read_csv(&quot;https://raw.githubusercontent.com/burakgiray/data/master/PalmBeach.csv&quot;)</code></pre>
-<ol start="7" style="list-style-type: decimal">
-<li><p>The dataset should open directly. If it does not, type <code>view(palmbeach)</code>. We can also examine the variable names, typing <code>names(palmbeach)</code>.</p></li>
-<li><p>R allows us to have multiple data frames open simultaneously, which is an advantage compared to Stata. However, we have to tell R which data frame to which we are referring. We can make a data frame active by typing <code>attach(palmbeach)</code>. Alternatively, one can also type <code>[dataframe]$[variable]</code> to select a particular variable from a particular data frame.</p></li>
-<li><p>If you remember your history, in 2000 there were concerns that the <code>Butterfly Ballot</code> led to voter confusion in Palm Beach county, and many residents of that county incorrectly cast votes for Pat Buchanan rather than Al Gore. To create the percentage of votes cast for Pat Buchanan in each county, go to the Console window and type the following:</p></li>
-</ol>
 <pre class="r"><code>palmbeach$bs &lt;- 100*palmbeach$BUCHANAN/palmbeach$VOTES</code></pre>
-<p>We have created a new variable, named bs, inside the palmbeach dataframe. If you look at the Environment tab, it should now tell you that there are 67 obs. for 28 variables. Suppose you wanted to examine the new variable. If you simply type the name of the variable (bs), RStudio might give you an error message. You need to either attach the data frame or type the full name of the variable <code>palmbeach$bs</code>.</p>
 <pre class="r"><code>summary(palmbeach$bs) #To see the summary statistics of bs</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ## 0.04653 0.13089 0.20020 0.24003 0.28179 0.89534</code></pre>
@@ -124,8 +100,6 @@ palmbeach &lt;- read_csv(&quot;https://raw.githubusercontent.com/burakgiray/data
 ##   9 | 0</code></pre>
 <pre class="r"><code>hist(palmbeach$bs,prob=T) #To see a histogram</code></pre>
 <p><img src="/post/lab/sample_files/figure-html/unnamed-chunk-8-2.png" width="672" /></p>
-<p>Suppose you wanted to save your work for the future. The best way to do this is with a script. If you click on the icon with the green plus-sign, the first option it gives you is an R script. You can also type <code>Ctrl-Shift-N</code>. If you click on R script, it will create a new script, most likely named Untitled1, into which you can paste commands from the Console window.</p>
-</div>
 </div>
 <div id="did-you-find-this-page-helpful-consider-sharing-it" class="section level3">
 <h3>Did you find this page helpful? Consider sharing it 🙌</h3>
