@@ -1,5 +1,5 @@
 ---
-date: "2020-09-6"
+date: "2020-09-06"
 diagram: true
 image:
   caption: 'Image credit: [**Safar Safarov**](https://unsplash.com/photos/MSN8TFhJ0is)'
@@ -8,7 +8,7 @@ math: true
 title: Sample Lab Session
 --- 
 
- 
+
 On this page, you'll find an example of the labs from Quantitative Methods I class, taught at University of Houston, Fall 2019. Feel free to use the R codes and practice on your own. You can check the solutions clicking on the link given at the end of this post.  
 
 ### Lab 01 - Quantitative Methods I - Fall 2019
