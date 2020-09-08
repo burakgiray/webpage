@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Patrick Shea | Burak Giray</title>
+    <link>/author/patrick-shea/</link>
+      <atom:link href="/author/patrick-shea/index.xml" rel="self" type="application/rss+xml" />
+    <description>Patrick Shea</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2020</copyright><lastBuildDate>Mon, 01 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/avatar</url>
+      <title>Patrick Shea</title>
+      <link>/author/patrick-shea/</link>
+    </image>
+    
+    <item>
+      <title>Selling Sovereignty: International Coercion, Debt Diplomacy, and Land Transactions </title>
+      <link>/publication/journal-article2/</link>
+      <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>/publication/journal-article2/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
