@@ -10,7 +10,7 @@ title: Teaching
 **University of Houston** 
 
 1. *Instructor of Record*
-    * POLS 3389 - European Union Politics :eu:, Spring 2021 (U)
+    * POLS 3389 - European Union Politics :eu:, Spring 2021 (U) [Syllabus](/files/POLS3389_Syllabus.pdf)
     
 2. *Laboratory Assistant*
     * POLS 6481 - Quantitative Methods II :chart_with_upwards_trend:, Spring 2020 (G) [TA Evaluation (Numbers 9 & 10)](/files/taevaluation.png)
