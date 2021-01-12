@@ -1,0 +1,6 @@
+"0","first_part_added$deneme = ifelse(first_part_added$HighIncome == 1, ""High-Income"", ""Non-High-Income"")"
+"0","ggplot(first_part_added, aes(first_part_added$deneme)) + "
+"0","  geom_bar() +"
+"0","  labs( "
+"0","       x = """","
+"0","       y = """")"
