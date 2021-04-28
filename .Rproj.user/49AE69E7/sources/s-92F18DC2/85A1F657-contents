@@ -1,0 +1,95 @@
+---
+title: Twitter
+author: admin
+date: '2021-03-16'
+slug: sample
+categories: []
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2020-09-04T15:33:57-05:00'
+featured: true
+image:
+  caption: 'Image credit: [**Safar Safarov**](https://unsplash.com/photos/MSN8TFhJ0is)'
+  placement: 3
+projects: []  
+---
+
+Here you can find the solutions for the R codes given in `Sample Lab Session` post. I hope the sample has been useful. 
+ 
+
+### Solutions:
+
+
+```{r}
+2*3
+2^3
+```
+
+
+
+```{r}
+log(2.718)
+exp(1)
+log(50, base = 10)
+``` 
+
+
+
+```{r}
+x <- 2
+y = 4
+x
+y
+x^3
+y^3
+sqrt(x)
+``` 
+
+
+
+```{r}
+fib <- c(1, 2, 3, 5, 8, 13)
+pri <- c(1, 3, 5, 7, 11, 13)
+fib
+pri
+fib[3] #to extract just the third element of either variable
+pri[6] #to extract just the sixth element of either variable
+sum(fib) #sum of the list of values
+sum(pri) #sum of the list of values
+``` 
+
+
+
+```{r}
+data <- cbind(fib, pri)
+data
+```
+
+
+```{r, warning=FALSE, message=FALSE}
+library(readr)
+palmbeach <- read_csv("https://raw.githubusercontent.com/burakgiray/data/master/PalmBeach.csv")
+```
+
+
+
+```{r}
+palmbeach$bs <- 100*palmbeach$BUCHANAN/palmbeach$VOTES
+```
+
+
+
+```{r}
+summary(palmbeach$bs) #To see the summary statistics of bs
+boxplot(palmbeach$bs,horizontal=T) #To see a box-and-whisker plot
+stem(palmbeach$bs,scale=2) #To see a stem-and-leaf plot
+hist(palmbeach$bs,prob=T) #To see a histogram
+```
+
+
+
+
+
+### Did you find this page helpful? Consider sharing it 🙌
