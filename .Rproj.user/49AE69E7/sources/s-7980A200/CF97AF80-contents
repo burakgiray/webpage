@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts | Burak Giray</title>
+    <link>/post/</link>
+      <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <description>Posts</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2021</copyright><lastBuildDate>Sun, 06 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/avatar</url>
+      <title>Posts</title>
+      <link>/post/</link>
+    </image>
+    
+    <item>
+      <title>Archived Tweets using R</title>
+      <link>/post/twitter/</link>
+      <pubDate>Sun, 06 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>/post/twitter/</guid>
+      <description>&lt;hr /&gt;
+&lt;h3 id=&#34;interested-in-using-archived-twitter-data-in-r&#34;&gt;Interested in using archived Twitter data in R?&lt;/h3&gt;
+&lt;p&gt;On this page, you&amp;rsquo;ll find a tutorial on how to access archived tweets in R. To be able to access archived tweets, first we need to connect to Twitter&amp;rsquo;s APIs and have a Twitter developer account. The Twitter API lets you read and write Twitter data. You can apply for a 
+&lt;a href=&#34;https://developer.twitter.com/en/docs/twitter-api/getting-started/getting-access-to-the-twitter-api&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Developer Account&lt;/a&gt; here.&lt;/p&gt;
+&lt;p&gt;Once your application is approved, you will have three essential elements to generate a token in R:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;app name&lt;/li&gt;
+&lt;li&gt;consumer key&lt;/li&gt;
+&lt;li&gt;consumer secret&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;To be able to access archived Twitter data, there is one more step to complete on Twitter Developer Portal. When signed in the Developer Portal, on the left hand side, you can find the &lt;code&gt;Products&lt;/code&gt; segment. Under products, you will see the option &lt;code&gt;Dev Environments&lt;/code&gt;, which will open up to three different subscription API packages. &lt;code&gt;Search Tweets: Full ArchiveSandbox&lt;/code&gt; is the one that you need to select. You can go ahead and click on set up dev environment for this particular API package. Please keep a record of the Dev environment label that you created for this API package as it will be useful when using R codes.&lt;/p&gt;
+&lt;p&gt;Below I am going to provide an instruction on how to access tweets from Democratic Republic of Congo in 2018 for the UN Mission called MONUSCO and the peacekeepers.&lt;/p&gt;
+&lt;h4 id=&#34;r-instructions-&#34;&gt;R Instructions:&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;After loading &lt;code&gt;rtweet&lt;/code&gt; package in R, you can run below codes to generate a token for the Twitter Data.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{R}&#34;&gt;app_name &amp;lt;- &amp;quot;APPnameHere&amp;quot;
+consumer_key &amp;lt;- &amp;quot;XXXXXXXXXXXXXXXX&amp;quot;
+consumer_secret &amp;lt;- &amp;quot;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&amp;quot;
+
+token &amp;lt;- create_token(app_name, consumer_key, consumer_secret)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;&lt;code&gt;search_fullarchive&lt;/code&gt; is the primary command that we need to run to be able to access to historical tweets.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The example below shows that I attempt to capture all tweets from Jan 1st 2018 at 00.00 to Jan 31st at 23.59 that include words or hashtags: MONUSCO, peacekeeper, peacekeeping, forces de l&amp;rsquo;ordre, casque bleu and soldats de la paix.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;We can change the countries where the tweets are sent from by writing the two digit country codes after &lt;code&gt;place_country&lt;/code&gt;. You can find the complete list of country codes in this link: &lt;a href=&#34;https://datahub.io/core/country-list&#34;&gt;https://datahub.io/core/country-list&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{R}&#34;&gt;monusco012018 &amp;lt;- search_fullarchive(q = &amp;quot;(MONUSCO OR peacekeeper OR peacekeeping OR forces de l&#39;ordre OR casque bleu OR soldats de la paix ) place_country:CD&amp;quot;,
+                                    n = 100, 
+                                    fromDate = &amp;quot;201801010000&amp;quot;, toDate = &amp;quot;201801312359&amp;quot;, 
+                                    env_name = &amp;quot;peacekeeper&amp;quot;, safedir = NULL, parse = TRUE, token = token)
+
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Please note that standard (free) APIs allow users to access up to 100 tweets at a time. That&amp;rsquo;s why the n is set to 100 in the r code above.&lt;/p&gt;
+&lt;p&gt;This tutorial has showed how to sign up for the Twitter Developer Portal, and the main r package and command to access archival tweets. Once you access the tweets, you will be able to apply text analysis freely. I hope you will find this short tutorial useful.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Sample Lab Session</title>
+      <link>/post/writing-technical-content/</link>
+      <pubDate>Sun, 06 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>/post/writing-technical-content/</guid>
+      <description>&lt;p&gt;On this page, you&amp;rsquo;ll find an example of the labs from Quantitative Methods I class, taught at University of Houston, Fall 2019. Feel free to use the R codes and practice on your own. You can check the solutions clicking on the link given at the end of this post.&lt;/p&gt;
+&lt;h3 id=&#34;lab-01---quantitative-methods-i---fall-2019&#34;&gt;Lab 01 - Quantitative Methods I - Fall 2019&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;I. Objectives:&lt;/strong&gt;
+To familiarize students with R and R Studio. Students will use the calculator functions of R, create a data frame, load a dataset, and create some plots.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Datasets:&lt;/strong&gt;
+“palmbeach.csv” contains votes for every presidential candidate in the 2000 election, for every county in Florida.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Packages:&lt;/strong&gt;
+None&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;instructions-&#34;&gt;Instructions:&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;The commands that you want to execute are typed on &amp;ldquo;R Console&amp;rdquo;. Here are some examples:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{R}&#34;&gt;2*3
+2^3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;R can be used as a simple calculator for addition, subtraction, multiplication, and division using the standard operators +, -, *, and /, respectively. You can use parentheses to group operations, and use the ^ symbol to raise a number to a higher power. R also calculates for natural exponent (e.g., &amp;gt; exp(1)) and the natural logarithm (e.g., &amp;gt; log(2.718)).&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;log(2.718)
+exp(1)
+log(50, base = 10)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Using the R console effectively will require storing data by associating values with names, which can then be used in place of numbers to complete calculations. Values can be assigned to variables using one of three operators: &lt;code&gt;&amp;lt;-, =, and -&amp;gt;&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{r}&#34;&gt;x &amp;lt;- 2
+y = 4
+x
+y
+x^3
+y^3
+sqrt(x)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;R stores data in vectors, which are simply ordered lists of numbers stored under a single name. A vector is created by using the &lt;code&gt;c() command&lt;/code&gt;; in between the parentheses you will list the values of the variable. For instance, we can create a vector of the first six unique terms of the fibonnacci sequence and another with first six odd prime numbers.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{r}&#34;&gt;fib &amp;lt;- c(1, 2, 3, 5, 8, 13)
+pri &amp;lt;- c(1, 3, 5, 7, 11, 13)
+fib
+pri
+fib[3] #to extract just the third element of either variable
+pri[6] #to extract just the sixth element of either variable
+sum(fib) #sum of the list of values
+sum(pri) #sum of the list of values
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;R has a more complex data structure, which you will use often, called a data frame. A data frame can be thought of as a spreadsheet: different columns represent the different variables in the data frame, and each row represents the values for a particular unit. We can combine our two variables (fib and pri) into a data frame by &lt;code&gt;binding&lt;/code&gt; the vectors together by typing:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{r}&#34;&gt;data &amp;lt;- cbind(fib, pri)
+data
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Now we’re going to work with a dataset. But, first we should clean the global environment. Let&amp;rsquo;s remove the data we created, typing &lt;code&gt;remove(data)&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The data that we are going to work on is called &lt;code&gt;palmbeach.csv&lt;/code&gt;. You can import it from my Github page. See the code to import below.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{r,&#34;&gt;library(readr)
+palmbeach &amp;lt;- read_csv(&amp;quot;https://raw.githubusercontent.com/burakgiray/data/master/PalmBeach.csv&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;The dataset should open directly. If it does not, type &lt;code&gt;view(palmbeach)&lt;/code&gt;. We can also examine the variable names, typing &lt;code&gt;names(palmbeach)&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;R allows us to have multiple data frames open simultaneously, which is an advantage compared to Stata. However, we have to tell R which data frame to which we are referring. We can make a data frame active by typing &lt;code&gt;attach(palmbeach)&lt;/code&gt;. Alternatively, one can also type &lt;code&gt;[dataframe]$[variable]&lt;/code&gt; to select a particular variable from a particular data frame.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If you remember your history, in 2000 there were concerns that the &lt;code&gt;Butterfly Ballot&lt;/code&gt; led to voter confusion in Palm Beach county, and many residents of that county incorrectly cast votes for Pat Buchanan rather than Al Gore. To create the percentage of votes cast for Pat Buchanan in each county, go to the Console window and type the following:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{r}&#34;&gt;palmbeach$bs &amp;lt;- 100*palmbeach$BUCHANAN/palmbeach$VOTES
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We have created a new variable, named bs, inside the palmbeach dataframe. If you look at the Environment tab, it should now tell you that there are 67 obs. for 28 variables. Suppose you wanted to examine the new variable. If you simply type the name of the variable (bs), RStudio might give you an error message. You need to either attach the data frame or type the full name of the variable &lt;code&gt;palmbeach$bs&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{r}&#34;&gt;summary(palmbeach$bs) #To see the summary statistics of bs
+boxplot(palmbeach$bs,horizontal=T) #To see a box-and-whisker plot
+stem(palmbeach$bs,scale=2) #To see a stem-and-leaf plot
+hist(palmbeach$bs,prob=T) #To see a histogram
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You can see the solutions for the R codes 
+&lt;a href=&#34;https://www.burakgiray.com/post/lab/sample/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Solutions for the Lab Session</title>
+      <link>/post/lab/sample/</link>
+      <pubDate>Fri, 04 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>/post/lab/sample/</guid>
+      <description>
+
+
+&lt;p&gt;Here you can find the solutions for the R codes given in &lt;code&gt;Sample Lab Session&lt;/code&gt; post. I hope the sample has been useful.&lt;/p&gt;
+&lt;div id=&#34;solutions&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Solutions:&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;2*3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 6&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;2^3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 8&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;log(2.718)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.9998963&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;exp(1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 2.718282&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;log(50, base = 10)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 1.69897&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- 2
+y = 4
+x&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;y&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 4&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x^3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 8&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;y^3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 64&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sqrt(x)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 1.414214&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fib &amp;lt;- c(1, 2, 3, 5, 8, 13)
+pri &amp;lt;- c(1, 3, 5, 7, 11, 13)
+fib&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1]  1  2  3  5  8 13&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;pri&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1]  1  3  5  7 11 13&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fib[3] #to extract just the third element of either variable&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;pri[6] #to extract just the sixth element of either variable&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 13&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sum(fib) #sum of the list of values&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 32&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sum(pri) #sum of the list of values&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 40&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data &amp;lt;- cbind(fib, pri)
+data&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      fib pri
+## [1,]   1   1
+## [2,]   2   3
+## [3,]   3   5
+## [4,]   5   7
+## [5,]   8  11
+## [6,]  13  13&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(readr)
+palmbeach &amp;lt;- read_csv(&amp;quot;https://raw.githubusercontent.com/burakgiray/data/master/PalmBeach.csv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;palmbeach$bs &amp;lt;- 100*palmbeach$BUCHANAN/palmbeach$VOTES&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(palmbeach$bs) #To see the summary statistics of bs&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+## 0.04653 0.13089 0.20020 0.24003 0.28179 0.89534&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;boxplot(palmbeach$bs,horizontal=T) #To see a box-and-whisker plot&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/lab/sample_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;stem(palmbeach$bs,scale=2) #To see a stem-and-leaf plot&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+##   The decimal point is 1 digit(s) to the left of the |
+## 
+##   0 | 
+##   0 | 57777888
+##   1 | 001122333333344
+##   1 | 666669999
+##   2 | 000112244444
+##   2 | 56778899
+##   3 | 1224
+##   3 | 67
+##   4 | 03
+##   4 | 6
+##   5 | 4
+##   5 | 568
+##   6 | 
+##   6 | 
+##   7 | 
+##   7 | 
+##   8 | 2
+##   8 | 
+##   9 | 0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;hist(palmbeach$bs,prob=T) #To see a histogram&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/lab/sample_files/figure-html/unnamed-chunk-8-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;did-you-find-this-page-helpful-consider-sharing-it&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Did you find this page helpful? Consider sharing it 🙌&lt;/h3&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

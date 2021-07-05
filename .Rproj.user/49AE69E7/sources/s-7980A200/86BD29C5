@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1625512538719.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "86BD29C5",
+    "lastKnownWriteTime" : 1625512685,
+    "last_content_update" : 1625512685,
+    "path" : "~/Desktop/webpage/public/publication/index.xml",
+    "project_path" : "public/publication/index.xml",
+    "properties" : {
+        "cursorPosition" : "38,4",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "xml"
+}
