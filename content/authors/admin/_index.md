@@ -6,15 +6,15 @@ bio: My research interests include Composition of UN Peacekeepers, Supply-side o
 education:
   courses:
   - course: PhD in Political Science and Government
-    institution: University of Houston, TX, USA
+    institution: University of Houston, Texas/USA
     year: 2022
     
   - course: BSc in Political Science and International Relations
-    institution: Cankaya University, Ankara, Turkey
+    institution: Cankaya University, Ankara/Turkey
     year: 2014
     
   - course: BA in Translation and Interpreting Studies
-    institution: Cankaya University, Ankara, Turkey
+    institution: Cankaya University, Ankara/Turkey
     year: 2014
     
 email: ""
