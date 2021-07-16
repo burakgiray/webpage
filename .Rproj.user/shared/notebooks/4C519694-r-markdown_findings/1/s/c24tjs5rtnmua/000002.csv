@@ -1,5 +1,0 @@
-"0",""
-"0","ggplot(first_part2, aes(x=start_year, y=newmaize, group=HighIncome, color=`High-Income`)) +"
-"0","  geom_smooth() + geom_vline(xintercept = 2008) + labs("
-"0","    x = ""Year"","
-"0","    y = ""Maize"") "
