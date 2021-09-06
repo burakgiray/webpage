@@ -1,5 +1,5 @@
 ---
-abstract: United Nations (UN) peacekeeping missions may have unintended consequences. Studies on unintended consequences of peacekeeping missions generally focus on the Sexual Exploitation and Abuse (SEA), in which the sole perpetrators are the peacekeepers themselves. However, troop-contributing governments are never held accountable for the actions of their peacekeepers. Misconducts that peacekeepers engage in may go beyond the abusive behavior and simple theft as sometimes they may also engage in illegal mineral trade and favoring one warring party over another, which are not always driven by peacekeepers' individual interests but by home governments' orders. Therefore, in this paper, looking at the composition of the peacekeepers, I speculate about the primary interests of the troop-contributing governments and their effect on the success of missions. Using a mediation analysis, I find that missions dominated by the troop-contributing countries (TCCs) with public interests decrease the civilian violence through decreasing peacekeepers' misconducts. The results show that the composition of peacekeepers have both direct and indirect effects on the civilian violence. The direct effect comes from the primary motivations of the governments, whether they participate to bring peace. The indirect effect arises, however, to the extent that troop-contributing governments are willing to prosecute their personnel when they engage in misconducts.
+abstract: 	Do all troop-providers deploy peacekeepers to combat civilian victimization in conflict countries? Earlier literature suggests that the answer to this question is no. Drawing on the conflict of interest theory, I posit that divergent interests of troop-providers reduce the ideational commitment of peacekeepers to the UN; therefore, the functionality of UN peacekeeping missions. This article explores the effect of peacekeepers' ideational commitment to the UN on reducing civilian victimization by combatants in all terminated and ongoing peacekeeping operations from 1990 to 2019. The results show that ideational commitment to the UN becomes more pivotal when peacekeepers are deployed in large numbers.
 authors:
 - admin
 date: "2020-10-01T00:00:00Z"
@@ -18,8 +18,8 @@ publishDate: "2017-01-01T00:00:00Z"
 slides: 
 summary: Not all troop-contributing countries share the same interests when they deploy personnel to a UN mission. In this study, looking at the composition of the peacekeepers, I speculate about the primary interests of the troop-contributing governments and their effect on the success of missions.
 tags:
-
-title: "Direct and Indirect Effects of UN Peacekeeping Missions on Civilian Violence
+ 
+title: "Ideational Commitment to the UN and Peacekeeping Effectiveness in Reducing Civilian Victimization
 "
 url_code: ""
 url_dataset: "" 
