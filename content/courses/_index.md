@@ -3,14 +3,16 @@ header:
   caption: ""
   image: ""
 layout: docs
-title: Teaching
 ---
+
+
+<h1 style="color:#cc0000;">University of Houston</h1>
 <hr />
 
-**University of Houston** 
+
 
 1. *Instructor of Record*
-    * POLS 3389 - European Union Politics :eu:, Spring 2021 (U) [Syllabus](/files/POLS3389_Syllabus.pdf), [Course Evaluation](/files/EUevaluation.pdf)
+    * POLS 3389 - European Union Politics :eu:, Spring 2021 (U) <a href="/files/POLS3389_Syllabus.pdf" style="color: #cc0000">Syllabus</a>, <a href="/files/EUevaluation.pdf" style="color: #cc0000">Course Evaluation</a> 
     
 2. *Laboratory Assistant*
     * POLS 6481 - Quantitative Methods II :chart_with_upwards_trend:, Spring 2020 (G) 
@@ -23,5 +25,8 @@ title: Teaching
     * POLS6332, Formal Models in International Relations :pencil2:, Fall 2018 (G)
     * POLS 3331, American Foreign Policy :us:, Fall 2017 & Spring 2018 (U)
     
+
+<img src="../../img/pic1.jpg" alt="" style="width:550px;height:550px;">
+
 U: Undergraduate Level Courses\
 G: Graduate Level Courses
