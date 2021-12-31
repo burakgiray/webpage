@@ -10,7 +10,6 @@ layout: docs
 <hr />
 
 
-
 1. *Instructor of Record*
     * POLS 3389 - European Union Politics :eu:, Spring 2021 (U) <a href="/files/POLS3389_Syllabus.pdf" style="color: #cc0000">Syllabus</a>, <a href="/files/EUevaluation.pdf" style="color: #cc0000">Course Evaluation</a> 
     

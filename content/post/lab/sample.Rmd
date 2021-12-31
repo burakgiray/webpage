@@ -3,7 +3,7 @@ title: Solutions for the Lab Session
 author: admin
 date: '2020-09-04'
 slug: sample
-categories: []
+categories: [] 
 tags: []
 subtitle: ''
 summary: ''
