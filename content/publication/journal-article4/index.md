@@ -2,7 +2,7 @@
 abstract: Private interests might sometimes influence the decisions of troop-providers in contributing to UN peacekeeping missions. The pursuit of private benefits, however, affects how peacekeeping missions' mandates are fulfilled. Drawing on the conflict-of-interest theory, I argue that the functionality of UN peacekeeping operations is damaged when troop-providers are not ideationally committed to the UN. This article explores the effect of troop-providers' ideational commitment to the UN on the length of UN missions, conducting a duration analysis over all terminated and ongoing peacekeeping operations from April 1991 to December 2019. The results show that divergent interests within peacekeeping operations increase the time required to terminate UN missions. The article makes two major contributions. First, it evaluates *the length of missions* as an indicator of 'success' in peacekeeping operations; therefore, introduces it as a new dimension to assess peacekeeping effectiveness. Second, building a relationship between troop-providers' raison d'être and the length of missions, the article outlines important policy implications to the UN.    
 authors:
 - admin 
-date: "2020-10-01T00:00:00Z" 
+date: "2022-02-01T00:00:00Z" 
 doi: ""
 featured: true
 image:
