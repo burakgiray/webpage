@@ -29,6 +29,7 @@ date_format = "Jan 2006"
   Responsibilities include:
   
   * Data collection & analysis
+  * Dissemination of results
     """
 
 

@@ -36,6 +36,9 @@ social:
 - icon: publons
   icon_pack: ai
   link: https://publons.com/researcher/3802338/burak-giray/
+- icon: google-scholar
+  icon_pack: ai
+  link: https://scholar.google.com/citations?hl=en&view_op=list_works&gmla=AJsN-F5zmqnlEhFIzQ4vIe8Jmdy_kAIxDFNdiC6ReQJg1SmfyB71SWIMu5hIUYMTP4knPOU184K3_2WacWFwlpTKVeTe81kSy6g6cCA3ursOo8QoXw5EntA&user=SWWelg8AAAAJ
 - icon: github
   icon_pack: fab
   link: https://github.com/burakgiray

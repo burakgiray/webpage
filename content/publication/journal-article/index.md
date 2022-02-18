@@ -3,7 +3,7 @@ abstract: Peacekeepers often play a vital role in enforcing agreements and promo
 authors:
 - admin
 - J. Tyson Chatagnier
-date: "2020-07-01T00:00:00Z"
+date: "2022-01-01T00:00:00Z"
 doi: ""
 featured: true
 image:
@@ -11,13 +11,13 @@ image:
   focal_point: ""
   preview_only: false
 projects: []
-#publication: '*Journal of Conflict Resolution* (Under review)'
+publication: '*Conflict Management and Peace Science (Under review)*'
 publication_short: ""
 publication_types: 
 - "2"
 publishDate: "2017-01-01T00:00:00Z"
 slides: 
-summary: Are post-war elections an identifiable exit strategy for Troop-Contributing Countries? In this paper, we find that TCCs that are most exposed to political risk from scandals or fiascoes in these peacekeeping missions are most apt to flee, viewing post-war elections as an identifiable exit strategy. 
+summary: 
 tags:
 
 title: "Election Accomplished: Democracies and the Timing of Peacekeeper Drawdowns"

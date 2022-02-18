@@ -20,7 +20,7 @@ publication_types:
 - "2"
 publishDate: "2017-01-01T00:00:00Z"
 slides: 
-summary: What are the geopolitical consequences of this increased lending? We argue that in the context of this debt diplomacy, borrowing states are more likely to use their own territory to settle debt accounts with sovereign lenders.
+summary: 
 tags:
 
 title: "Selling Sovereignty:
