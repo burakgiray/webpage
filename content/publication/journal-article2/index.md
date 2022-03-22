@@ -24,8 +24,7 @@ summary:
 tags:
 
 title: "Selling Sovereignty:
-International Coercion, Debt Diplomacy, and Land Transactions
-"
+International Coercion, Debt Diplomacy, and Land Transactions"
 url_code: ""
 url_dataset: ""
 url_pdf: ""
