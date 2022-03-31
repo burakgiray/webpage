@@ -19,9 +19,9 @@ education:
     
 email: ""
 interests:
-- Composition of UN Peacekeepers
+- Peacekeeping Effectiveness
 - Supply-side of Peacekeeping
-- Peace Settlements
+- Legitimacy of UN Missions
 organizations:
 - name: University of Houston
   url: "https://www.uh.edu/class/political-science/"
@@ -49,7 +49,10 @@ user_groups:
 - Visitors
 ---
 
-Welcome to my page! I am a Ph.D. candidate in the Department of Political Science at the University of Houston. My major field is International Relations and my research interests include the composition of UN peacekeepers, effectiveness of peacekeeping missions, supply-side of peacekeeping and peace settlements. 
+I am a Ph.D. candidate in the Department of Political Science at the University of Houston. My main research areas include UN interventions in conflicts, the supply-side, effectiveness and legitimacy
+of UN peacekeeping operations, and the durability of peace settlements. 
+
+In my dissertation, **UN Peacekeeping Operations: Conflicting Interests and Effectiveness**, I study how divergent interests of troop-providers affect the overall success of UN peacekeeping missions.
 
 
 
