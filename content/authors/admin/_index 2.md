@@ -7,7 +7,7 @@ education:
   courses:
   - course: PhD in Political Science and Government
     institution: University of Houston, TX, USA
-    year: 2021
+    year: 2022
     
   - course: BSc in Political Science and International Relations
     institution: Cankaya University, Ankara, Turkey
