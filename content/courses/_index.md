@@ -6,11 +6,10 @@ layout: docs
 ---
 
 
+
 <h1 style="color:#cc0000;">University of Houston</h1>
 <hr />
 
-
-In Summer 2022, I earned internationally-recognized <a href="/files/cirtl_associate.pdf" style="color: #cc0000">CIRTL certification at the Associate level</a> at the end of a full-length course which helped me develop my understanding of evidence-based teaching practice. 
  
 1. *Instructor of Record*
     * POLS 3389 - European Union Politics :eu:, Spring 2021 (U) <a href="/files/POLS3389_Syllabus.pdf" style="color: #cc0000">Syllabus</a>, <a href="/files/EUevaluation.pdf" style="color: #cc0000">Course Evaluation</a> 
