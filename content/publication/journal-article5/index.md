@@ -10,7 +10,7 @@ image:
   focal_point: ""
   preview_only: false
 projects: []
-publication: '*Peace Economics, Peace Science and Public Policy (invited to Revise & Resubmit)*'
+publication: '*Peace Economics, Peace Science and Public Policy (Accepted)*'
 publication_short: ""
 publication_types:  
 - "2"
