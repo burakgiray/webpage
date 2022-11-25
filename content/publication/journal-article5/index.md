@@ -1,16 +1,16 @@
 ---
-abstract: UN peacekeepers are often targeted by rebel groups. The violence they experience hinders the functionality of peacekeeping operations, constituting a major problem for the UN. What conditions make these attacks more likely? How does the local support for UN peacekeeping operations affect the violence against peacekeepers? Using an original data set that includes local trust sentiments towards MONUSCO's peacekeepers in the Democratic Republic of the Congo from October 2014 to December 2020, this study finds that peacekeepers are attacked more often when they lack local support. In the absence of local support, peacekeepers become vulnerable as they no longer gather intelligence about rebel activities from the locals and the increased distrust for peacekeepers gives propagandist benefits to rebel groups. That's why local groups' perceptions of peacekeepers are found to be instrumental in the violence committed by rebel groups against peacekeepers. The study suggests the UN that it needs to employ strategies in peacekeeping operations that would legitimize the presence of peacekeepers and cultivate more strengthened civil-military relations. 
+abstract: UN peacekeepers are often targeted by rebel groups. The violence they experience hinders the functionality of peacekeeping operations, constituting a major problem for the UN. What conditions make these attacks more likely? How does the local support for UN peacekeeping operations affect the violence against peacekeepers? Using an original data set that includes local trust sentiments towards MONUSCO's peacekeepers in the Democratic Republic of the Congo from October 2014 to December 2020, this study finds that peacekeepers are attacked more often when they lack local support. In the absence of local support, peacekeepers become vulnerable as they can no longer gather intelligence about rebel activities from the locals and the increased distrust for peacekeepers gives propagandist benefits to rebel groups. This study suggests to the UN that it needs to employ strategies in peacekeeping operations that would legitimize the presence of peacekeepers and cultivate more strengthened civil-military relations. 
 authors:
 - admin 
-date: "2022-03-01T00:00:00Z" 
-doi: ""
+date: "2022-11-17T00:00:00Z" 
+doi: "https://doi.org/10.1515/peps-2022-0028"
 featured: true
 image:
   caption: 'Image credit: Burak Giray'
   focal_point: ""
   preview_only: false
 projects: []
-publication: '*Peace Economics, Peace Science and Public Policy (Accepted)*'
+publication: '*Peace Economics, Peace Science and Public Policy*'
 publication_short: ""
 publication_types:  
 - "2"
