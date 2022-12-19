@@ -49,8 +49,7 @@ user_groups:
 - Visitors
 ---
 
-I am a Ph.D. candidate in the Department of Political Science at the University of Houston. My main research areas include UN interventions in conflicts, the supply-side, effectiveness and legitimacy
-of UN peacekeeping operations, and the durability of peace settlements. 
+I hold a Ph.D. in Political Science at the [University of Houston](https://www.uh.edu/class/political-science/graduate/job-candidates/). My main research areas include UN interventions in conflicts, the supply-side, effectiveness and legitimacy of UN peacekeeping operations, and the durability of peace settlements. 
 
 In my dissertation, **UN Peacekeeping Operations: Conflicting Interests and Effectiveness**, I study how divergent interests of troop-providers affect the overall success of UN peacekeeping missions.
 
