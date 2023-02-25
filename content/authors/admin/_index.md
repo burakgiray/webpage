@@ -23,9 +23,9 @@ interests:
 - Supply-side of Peacekeeping
 - Legitimacy of UN Missions
 organizations:
-- name: University of Houston
-  url: "https://www.uh.edu/class/political-science/"
-role: Research & Teaching Assistant
+- name: Hertie School
+  url: "https://www.hertie-school.org/en/research/faculty-and-researchers/profile/person/giray"
+role: Postdoctoral Researcher
 social:
 - icon: envelope
   icon_pack: fas
@@ -48,6 +48,8 @@ user_groups:
 - Researchers
 - Visitors
 ---
+
+I am a postdoctoral researcher at the Hertie School's Centre for International Security. My postdoctoral project **''Peacekeeping Dynamics and Local Support Mining and Analyzing Tweets from Conflict Countries''** is funded by German Academic Exchange Service (DAAD). 
 
 I hold a Ph.D. in Political Science at the [University of Houston](https://www.uh.edu/class/political-science/graduate/job-candidates/). My main research areas include UN interventions in conflicts, the supply-side, effectiveness and legitimacy of UN peacekeeping operations, and the durability of peace settlements. 
 
