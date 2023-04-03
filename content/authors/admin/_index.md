@@ -52,11 +52,11 @@ user_groups:
 
 
 
-I am a postdoctoral researcher at [Hertie School](https://www.hertie-school.org/en/research/faculty-and-researchers/profile/person/giray)'s Centre for International Security and a visiting researcher at the Department of Peace and Conflict Research, [Uppsala University](https://www.katalog.uu.se/profile/?id=N23-371). My postdoctoral project **''Peacekeeping Dynamics and Local Support Mining and Analyzing Tweets from Conflict Countries''** and my research stay in Sweden are funded by German Academic Exchange Service (DAAD). 
+I am a postdoctoral researcher at [Hertie School](https://www.hertie-school.org/en/research/faculty-and-researchers/profile/person/giray)'s Centre for International Security and a visiting researcher at the Department of Peace and Conflict Research, [Uppsala University](https://www.katalog.uu.se/profile/?id=N23-371). My postdoctoral project **"Peacekeeping Dynamics and Local Support Mining and Analyzing Tweets from Conflict Countries"** and my research stay in Sweden are funded by German Academic Exchange Service (DAAD). 
 
 I hold a Ph.D. in Political Science at the [University of Houston](https://www.uh.edu/class/political-science/graduate/job-candidates/). My main research areas include UN interventions in conflicts, the supply-side, effectiveness and legitimacy of UN peacekeeping operations, and the durability of peace settlements. 
 
-In my dissertation, **''UN Peacekeeping Operations: Conflicting Interests and Effectiveness''**, I study how divergent interests of troop-providers affect the overall success of UN peacekeeping missions.
+In my dissertation, **"UN Peacekeeping Operations: Conflicting Interests and Effectiveness"**, I study how divergent interests of troop-providers affect the overall success of UN peacekeeping missions.
 
 
 
