@@ -10,7 +10,7 @@ image:
   focal_point: ""
   preview_only: false
 projects: []
-publication: '*International Peacekeeping (Under review)*'
+publication: '*International Peacekeeping (Forthcoming)*'
 publication_short: ""
 publication_types:  
 - "2"

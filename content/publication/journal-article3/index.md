@@ -10,7 +10,7 @@ image:
   focal_point: ""
   preview_only: false
 projects: []
-publication: '*International Interactions (invited to Revise & Resubmit)*'
+publication: '*International Interactions (Forthcoming)*'
 publication_short: ""
 publication_types:  
 - "2"
