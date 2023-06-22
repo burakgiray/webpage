@@ -11,21 +11,27 @@
 #url = "#projects"
 #weight = 30
 
-[[main]]
-    name = "Research"
-   url = "#publications"
-  weight = 20 
+
+
+#[[main]]
+ #   name = "Research"
+  # url = "#publications"
+#  weight = 20 
 # above is the old works in progress page. 
 
 
   
 
+#[[main]]
+#  name = "Posts"
+#  url = "#posts"
+#  weight = 30    
+
 [[main]]
-  name = "Posts"
-  url = "#posts"
-  weight = 30    
-
-
+    name = "Publications"
+    url = "research/"
+    weight = 30
+    
 [[main]]
   name = "Teaching"
   url = "courses/"
@@ -35,17 +41,16 @@
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
 
 
-
 [[main]]
     name = "CV"
     url = "files/burakgiray.pdf"
-    weight = 50
+    weight = 60
     
 
 
 [[main]]
   name = "Contact"
   url = "#contact"
-  weight = 60
+  weight = 70
 
 

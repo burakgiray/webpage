@@ -1,7 +1,7 @@
 ---
 abstract: UN peacekeepers are often targeted by rebel groups. The violence they experience hinders the functionality of peacekeeping operations, constituting a major problem for the UN. What conditions make these attacks more likely? How does the local support for UN peacekeeping operations affect the violence against peacekeepers? Using an original data set that includes local trust sentiments towards MONUSCO's peacekeepers in the Democratic Republic of the Congo from October 2014 to December 2020, this study finds that peacekeepers are attacked more often when they lack local support. In the absence of local support, peacekeepers become vulnerable as they can no longer gather intelligence about rebel activities from the locals and the increased distrust for peacekeepers gives propagandist benefits to rebel groups. This study suggests to the UN that it needs to employ strategies in peacekeeping operations that would legitimize the presence of peacekeepers and cultivate more strengthened civil-military relations. 
 authors:
-- admin 
+#- admin 
 date: "2022-11-17T00:00:00Z" 
 doi: "https://doi.org/10.1515/peps-2022-0028"
 featured: true
