@@ -1,30 +1,28 @@
 ---
-authors:
-- admin
-bio: My research interests include Composition of UN Peacekeepers, Supply-side of Peacekeeping, Peace Settlements
-  matter.
+title: "Burak Giray"
+bio: My research interests include Composition of UN Peacekeepers, Supply-side of
+  Peacekeeping, Peace Settlements matter.
 education:
   courses:
   - course: PhD in Political Science and Government
     institution: University of Houston, Texas/USA
     year: 2022
-    
-  - course: BSc in Political Science and International Relations
+  - course: MA in International Relations
+    institution: Social Sciences University of Ankara, Ankara/Turkey
+    year: 2016
+  - course: BA in Translation Studies & Double Major in Political Science
     institution: Cankaya University, Ankara/Turkey
     year: 2014
     
-  - course: BA in Translation and Interpreting Studies
-    institution: Cankaya University, Ankara/Turkey
-    year: 2014
     
-email: ""
+email: ''
 interests:
 - Peacekeeping Effectiveness
 - Supply-side of Peacekeeping
 - Legitimacy of UN Missions
 organizations:
 - name: Hertie School
-  url: "https://www.hertie-school.org/en/research/faculty-and-researchers/profile/person/giray"
+  url: https://www.hertie-school.org/en/research/faculty-and-researchers/profile/person/giray
 role: Postdoctoral Researcher
 social:
 - icon: envelope
@@ -42,8 +40,8 @@ social:
 - icon: github
   icon_pack: fab
   link: https://github.com/burakgiray
-superuser: true
-title: Burak Giray
+superuser: yes
+authors: admin
 user_groups:
 - Researchers
 - Visitors
