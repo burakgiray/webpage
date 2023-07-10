@@ -14,7 +14,7 @@ layout: docs
 
 
 * *Instructor of Record*
-    * POLS 3389 - European Union Politics, Spring 2021 (U) <a href="/files/POLS3389_Syllabus.pdf" style="color: #blue">Syllabus</a>, <a href="/files/EUevaluation.pdf" style="color: #blue">Course Evaluation</a> 
+    * POLS 3389 - European Union Politics, Spring 2021 (U) <a href="/files/POLS3389_Syllabus.pdf" style="color: #blue">Syllabus</a>, <a href="/files/EUevaluation.pdf" style="color: blueviolet">Course Evaluation</a> 
 <br/>
 * *Laboratory Assistant*
     * POLS 6481 - Quantitative Methods II, Spring 2020 (G) 
