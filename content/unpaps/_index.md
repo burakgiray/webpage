@@ -29,19 +29,19 @@ layout: docs
 
 <h3 style="background-color:blue;color:white">Main Peacekeeping Activities</h3>  
 
-<iframe width="100%" height="650" src="http://burak-giray.shinyapps.io/monusco/"></iframe>
+<iframe width="100%" height="650" src="https://burak-giray.shinyapps.io/monusco/"></iframe>
 
 <p> The UNPAPS dataset provides the ability to break down peacekeeping activities into specific categories. For instance, it allows for a detailed examination of the various types of patrolling involved in security-related tasks. The figure presented below showcases the diverse forms of patrolling activities carried out by UN peacekeepers in the DRC. <p> 
 
 <h3 style="background-color:blue;color:white">Types of Patrolling</h3>   
 
-<iframe width="100%" height="650" src="http://burak-giray.shinyapps.io/patrol/"></iframe>
+<iframe width="100%" height="650" src="https://burak-giray.shinyapps.io/patrol/"></iframe>
 
 <p> Additionally, UNPAPS includes data on the nationalities of peacekeepers involved in important peacekeeping activities. As depicted in the figure below, there has been a noticeable increase in reporting the nationalities of peacekeepers since 2018. Starting from that year, countries such as Pakistan, Nepal, Bangladesh, India, and Indonesia have shown the highest levels of engagement in MONUSCO. By utilizing this dataset, researchers can analyze the consistent involvement of specific peacekeeping forces in various peacekeeping tasks.
 
-<iframe width="100%" height="650" src="http://burak-giray.shinyapps.io/contributors/"></iframe>
+<iframe width="100%" height="650" src="https://burak-giray.shinyapps.io/contributors/"></iframe>
 
-<iframe src="http://burak-giray.shinyapps.io/contributors/" width="800" height="900" style="border: none;"></iframe>
+<iframe src="https://burak-giray.shinyapps.io/contributors/" width="800" height="900" style="border: none;"></iframe>
 
 
 <h3 style="background-color:blue;color:white">Things to Come</h3>   
