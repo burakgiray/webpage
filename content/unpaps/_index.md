@@ -41,6 +41,9 @@ layout: docs
 
 <iframe width="100%" height="650" src="http://burak-giray.shinyapps.io/contributors/"></iframe>
 
+<iframe src="http://burak-giray.shinyapps.io/contributors/" width="800" height="900" style="border: none;"></iframe>
+
+
 <h3 style="background-color:blue;color:white">Things to Come</h3>   
 
 <p> At present, my focus involves expanding the dataset to encompass additional current UN peacekeeping operations. The data presented above is limited to the coverage of MONUSCO in the Democratic Republic of the Congo (DRC). <p>
