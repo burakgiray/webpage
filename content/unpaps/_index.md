@@ -41,8 +41,6 @@ layout: docs
 
 <iframe width="100%" height="650" src="https://burak-giray.shinyapps.io/contributors/"></iframe>
 
-<iframe src="https://burak-giray.shinyapps.io/contributors/" width="800" height="900" style="border: none;"></iframe>
-
 
 <h3 style="background-color:blue;color:white">Things to Come</h3>   
 
