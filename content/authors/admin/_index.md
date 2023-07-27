@@ -1,7 +1,6 @@
 ---
 title: "Burak Giray"
-bio: My research interests include Composition of UN Peacekeepers, Supply-side of
-  Peacekeeping, Peace Settlements matter.
+bio: My research interests include Peace and Conflict Processes.
 education:
   courses:
   - course: PhD in Political Science and Government
