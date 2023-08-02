@@ -17,7 +17,7 @@ layout: docs
 <br/>
 * Giray, Burak. (2023). <a href="https://doi.org/10.1080/03050629.2023.2184813">''Troop-providers' ideational commitment to UN peacekeeping and effectiveness.''</a> <em>International Interactions</em> 49 (3): 372-400.  <a href="/files/replication_files_II.zip" style="color:blueviolet">{{<icon name="download" pack="fas" >}}[Replication Materials]</a>
 <br/>
-* Giray, Burak. (2022). <a href="https://doi.org/10.1515/peps-2022-0028">''Public Support for the UN Missions and Attacks on Peacekeepers: Evidence from the Democratic Republic of the Congo.''</a> <em>Peace Economics, Peace Science and Public Policy</em> 28 (4): 305-332.  <a href="/files/replication_files_II.zip" style="color:blueviolet">{{<icon name="download" pack="fas" >}}[Replication Materials]</a>
+* Giray, Burak. (2022). <a href="https://doi.org/10.1515/peps-2022-0028">''Public Support for the UN Missions and Attacks on Peacekeepers: Evidence from the Democratic Republic of the Congo.''</a> <em>Peace Economics, Peace Science and Public Policy</em> 28 (4): 305-332.  <a href="/files/replication files PEPSPP.zip" style="color:blueviolet">{{<icon name="download" pack="fas" >}}[Replication Materials]</a>
 <br/>
 
 <h3 style="background-color:blue;color:white">Works under Review</h3>  
