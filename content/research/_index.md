@@ -11,7 +11,7 @@ layout: docs
 <h3 style="background-color:blue;color:white">Peer-reviewed Articles</h3>  
 
 
-* Giray, Burak. (Forthcoming). ''Do UN Missions have an Expiration Date?: Ideational Commitment to the UN and the Length of Missions.'' <em>International Peacekeeping</em>.
+* Giray, Burak. (2023). <a href="https://doi.org/10.1080/13533312.2023.2246362">''Do UN Missions have an Expiration Date?: Ideational Commitment to the UN and the Length of Missions.''</a> <em>International Peacekeeping</em>.
 <br/>
 * Giray, Burak and J. Tyson Chatagnier. (2023). <a href="https://doi.org/10.1177/10659129231190614">''Election Accomplished: Democracies and the Timing of Peacekeeper Drawdowns.''</a> <em>Political Research Quarterly </em> 0(0). <a href="/files/election_accomplished_supplementary_files.zip" style="color:blueviolet">{{<icon name="download" pack="fas" >}}[Replication Materials]</a>
 <br/>
