@@ -27,13 +27,13 @@ layout: docs
 <p><u>Unit of Analysis</u>: country-province-day.</p>
 <p><u>Time Period</u>: The dataset covers the period from 28 July 2010 to 30 December 2022.</p>
 
-<p style='text-align: justify;'>Below, I present the main peacekeeping activities carried out in the Democratic Republic of Congo across its provinces.</p>
+<p style='text-align: justify;'>Below, I present the main peacekeeping activities carried out in the Democratic Republic of Congo (DRC) and Central African Republic (CAR) across their provinces.</p>
 
 <h3 style="background-color:blue;color:white">Main Peacekeeping Activities</h3>  
 
 <iframe width="100%" height="750" src="https://burak-giray.shinyapps.io/monusco/"></iframe>
 
-<p style='text-align: justify;'>The UNPAPS dataset provides the ability to break down peacekeeping activities into specific categories. For instance, it allows for a detailed examination of the various types of patrolling involved in security-related tasks. The figure presented below showcases the diverse forms of patrolling activities carried out by UN peacekeepers in the DRC. </p>
+<p style='text-align: justify;'>The UNPAPS dataset provides the ability to break down peacekeeping activities into specific categories. For instance, it allows for a detailed examination of the various types of patrolling involved in security-related tasks. The figure presented below showcases the diverse forms of patrolling activities carried out by UN peacekeepers in the DRC and CAR. </p>
 
 <h3 style="background-color:blue;color:white">Types of Patrolling</h3>   
 
@@ -46,7 +46,7 @@ layout: docs
 
 <h3 style="background-color:blue;color:white">Things to Come</h3>   
 
-<p style='text-align: justify;'>At present, my focus involves expanding the dataset to encompass additional current UN peacekeeping operations. The data presented above is limited to the coverage of MONUSCO in the Democratic Republic of the Congo (DRC).</p>
+<p style='text-align: justify;'>At present, my focus involves expanding the dataset to encompass additional current UN peacekeeping operations. The data presented above is limited to the coverage of MONUSCO in the DRC and MINUSCA in CAR.</p>
  
 <h3 style="background-color:blue;color:white">Acknowledgement</h3>  
 
