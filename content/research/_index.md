@@ -28,11 +28,14 @@ layout: docs
 
 * "Introducing UN Peacekeeping Activities and Public Services (UNPAPS) Dataset"
 <br/>
+* "Infrastructure Building, Local Support, and One-Sided Violence: A Mediation Analysis in UN Peacekeeping Operations"
+<br/>
+* "Timing and Tactics: UN Peacekeeping Operations’ Engagement with Local Populations on Twitter" (with Lisa Hultman)
+<br/>
 * "UN Peacekeeping as an Opportunity to Modernize an Army"
 <br/>
 * "The Composition of Peacekeepers and the Timing of Post-Civil War Elections"
-
 <img src="../../img/houston.jpg" alt="" style="width:600px;height:350px;"> 
-
+ 
 
 

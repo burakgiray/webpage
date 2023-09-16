@@ -55,4 +55,3 @@ layout: docs
 <h3 style="background-color:blue;color:white">Acknowledgement</h3>  
 
 <p style='text-align: justify;'>The project is supported by the PRIME programme of the German Academic Exchange Service (DAAD) with funds from the German Federal Ministry of Education and Research (BMBF).</p>
-
