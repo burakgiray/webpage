@@ -32,6 +32,8 @@ layout: docs
 <br/>
 * "Timing and Tactics: UN Peacekeeping Operations’ Engagement with Local Populations on Twitter" (with Lisa Hultman)
 <br/>
+* "Who Does What: Determinants Shaping Countries’ Engagement in UN Peacekeeping" (with Yuyang Pu)
+<br/>
 * "UN Peacekeeping as an Opportunity to Modernize an Army"
 <br/>
 * "The Composition of Peacekeepers and the Timing of Post-Civil War Elections"
