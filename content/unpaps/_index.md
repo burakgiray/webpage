@@ -14,7 +14,7 @@ layout: docs
 <h3 style="background-color:blue;color:white">Analyzing Peacekeeping Operations with UNPAPS</h3>
 
 
-<p style='text-align: justify;'>The UN Peacekeeping Activities Publicly Sourced (UNPAPS) dataset addresses the lack of systematic data on UN peacekeepers' activities in conflict countries. By sourcing information from verified Twitter accounts of UN peacekeeping missions, UNPAPS provides valuable insights into the diverse range of tasks undertaken by peacekeepers, from administrative duties to security-related responsibilities. Researchers can utilize this dataset to study local support, conflict dynamics, and post-conflict peacebuilding, enhancing our understanding of the impact of peacekeeping efforts and the importance of community engagement for sustainable peace.</p>
+<p style='text-align: justify;'>The UN Peacekeeping Activities and Public Services (UNPAPS) dataset addresses the lack of systematic data on UN peacekeepers' activities in conflict countries. By sourcing information from verified Twitter accounts of UN peacekeeping missions, UNPAPS provides valuable insights into the diverse range of tasks undertaken by peacekeepers, from administrative duties to security-related responsibilities. Researchers can utilize this dataset to study local support, conflict dynamics, and post-conflict peacebuilding, enhancing our understanding of the impact of peacekeeping efforts and the importance of community engagement for sustainable peace.</p>
 
 <h3 style="background-color:blue;color:white">Data Collection and Classification Procedure</h3>  
 
