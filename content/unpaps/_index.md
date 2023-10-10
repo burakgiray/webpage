@@ -47,7 +47,7 @@ Using the UNPAPS dataset, it is also possible to track the daily infrastructure-
 
 <iframe width="100%" height="750" src="https://burak-giray.shinyapps.io/infrastructure/"></iframe>
 
-<p style='text-align: justify;'>Additionally, UNPAPS includes data on the nationalities of peacekeepers involved in important peacekeeping activities. As depicted in the figure below, there has been a noticeable increase in reporting the nationalities of peacekeepers since 2018. Starting from that year, countries such as Pakistan, Nepal, Bangladesh, India, and Indonesia have shown the highest levels of engagement. By utilizing this dataset, researchers can analyze the consistent involvement of specific peacekeeping forces (of MONUSCO and MINUSCA) in various peacekeeping tasks.</p>
+<p style='text-align: justify;'>Additionally, UNPAPS includes data on the nationalities of peacekeepers involved in important peacekeeping activities. As depicted in the figure below, there has been a noticeable increase in reporting the nationalities of peacekeepers since 2018. Starting from that year, countries such as Pakistan, Nepal, Bangladesh, India, and Indonesia have shown the highest levels of engagement. By utilizing this dataset, researchers can analyze the consistent involvement of specific peacekeeping forces (of MONUSCO, MINUSCA, and MINUSMA) in various peacekeeping tasks.</p>
 
 
 <iframe width="100%" height="750" src="https://burak-giray.shinyapps.io/all_contributors/"></iframe>
