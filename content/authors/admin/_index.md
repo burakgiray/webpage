@@ -20,8 +20,8 @@ interests:
 - Supply-side of Peacekeeping
 - Legitimacy of UN Missions
 organizations:
-- name: Hertie School
-  url: https://www.hertie-school.org/en/research/faculty-and-researchers/profile/person/giray
+- name: Hochschule für Politik München
+  url: https://www.hfp.tum.de/en/governance/team/
 role: Postdoctoral Researcher
 social:
 - icon: envelope
@@ -49,7 +49,7 @@ user_groups:
 
 
 
-I am a postdoctoral researcher at [Hertie School](https://www.hertie-school.org/en/research/faculty-and-researchers/profile/person/giray)'s Centre for International Security and a visiting researcher at the Department of Peace and Conflict Research, [Uppsala University](https://www.katalog.uu.se/profile/?id=N23-371). My postdoctoral project **"Peacekeeping Dynamics and Local Support Mining and Analyzing Tweets from Conflict Countries"** and my research stay in Sweden are funded by German Academic Exchange Service (DAAD). 
+I am a postdoctoral researcher at the Hochschule für Politik an der Technische Universität München (TUM), at the Chair of European and Global Governance. Before joining TUM, I was a postdoctoral researcher at the Hertie School's Centre for International Security and a visiting researcher at Uppsala University's Department of Peace and Conflict Research. My postdoctoral project **"Peacekeeping Dynamics and Local Support Mining and Analyzing Tweets from Conflict Countries"** and my research stay in Sweden were funded by the German Academic Exchange Service (DAAD) in the 2023/24 academic year.
 
 I hold a Ph.D. in Political Science at the [University of Houston](https://www.uh.edu/class/political-science/graduate/job-candidates/). My research focuses on various aspects of UN interventions in conflicts, including the supply-side dynamics, effectiveness, and legitimacy of UN peacekeeping operations, as well as the long-term sustainability of peace settlements.
 

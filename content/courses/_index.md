@@ -9,7 +9,14 @@ layout: docs
 <h1 style="text-align:center;">Teaching Experience</h1>
 <hr />
 
+<h3 style="background-color:#102ec8;color:white">Hochschule für Politik München</h3>  
 
+* *Lecturer*
+    * Module (SOT86705) - Disruptions in Governance and Technology, Summer 2024 (G)
+        * Seminar 1 - Digitalization of Civil Conflicts and Peace Operations
+        * Seminar 2 - UN Peacekeeping in a Multipolar World
+
+ 
 <h3 style="background-color:#E5E4E2;color:#c8102e">Hertie School</h3>  
 
 * *Lecturer*
