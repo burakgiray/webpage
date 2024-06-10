@@ -1,6 +1,6 @@
 ---
 title: "Burak Giray"
-bio: My research interests include Peace and Conflict Processes.
+bio: My research interests include Peace and Conflict Processes. 
 education:
   courses:
   - course: PhD in Political Science and Government
