@@ -22,6 +22,8 @@ layout: docs
 
 <h3 style="background-color:blue;color:white">Works under Review</h3>  
 
+* "The Vital Role of Peacekeepers in Medical Assistance and COVID-19 Response" (Revise & Resubmit)
+
 * "Repaying Debt with Land: Debt Diplomacy, Domestic Politics, and Land Transactions" (with Jonas Bunte and Patrick Shea)
 
 <h3 style="background-color:blue;color:white">Works in Progress</h3>  
@@ -32,9 +34,9 @@ layout: docs
 <br/>
 * "Timing and Tactics: UN Peacekeeping Operations’ Engagement with Local Populations on Twitter" (with Lisa Hultman)
 <br/>
-* "Who Does What: Determinants Shaping Countries’ Engagement in UN Peacekeeping" (with Yuyang Pu)
+* "Who Does What: Determinants Shaping Countries’ Engagement in UN Peacekeeping"
 <br/>
-* "UN Peacekeeping as an Opportunity to Modernize an Army"
+* "UN Peacekeeping as an Opportunity to Modernize an Army" (with Jared Oestman)
 <br/>
 * "The Composition of Peacekeepers and the Timing of Post-Civil War Elections"
 <img src="../../img/houston.jpg" alt="" style="width:600px;height:350px;"> 
