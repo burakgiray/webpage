@@ -5,17 +5,17 @@ header:
 layout: docs
 ---
 
-
+ 
 <h1 style="text-align:center;">Teaching Experience</h1>
 <hr />
 
 <h3 style="background-color:#102ec8;color:white">Hochschule für Politik München</h3>  
-
+ 
 * *Lecturer*
     * Module (SOT86705) - Disruptions in Governance and Technology, Summer 2024 (G)
-        * Seminar 1 - Digitalization of Civil Conflicts and Peace Operations
-        * Seminar 2 - UN Peacekeeping in a Multipolar World
-
+        * Seminar 1 - Digitalization of Civil Conflicts and Peace Operations <a href="/files/syllabus_tum1.pdf" style="color: #blue">[Syllabus]</a>
+        * Seminar 2 - UN Peacekeeping in a Multipolar World <a href="/files/syllabus_tum2.pdf" style="color: #blue">[Syllabus]</a>
+ 
  
 <h3 style="background-color:#E5E4E2;color:#c8102e">Hertie School</h3>  
 
@@ -27,7 +27,7 @@ layout: docs
  
  
 * *Lecturer*
-    * POLS 3389 - European Union Politics, Spring 2021 (U) <a href="/files/POLS3389_Syllabus.pdf" style="color: #blue">[Syllabus]</a> <a href="/files/EUevaluation.pdf" style="color: blueviolet">[Course Evaluation]</a> 
+    * POLS 3389 - European Union Politics, Spring 2021 (U) <a href="/files/POLS3389_Syllabus.pdf" style="color: #blue">[Syllabus]</a>
 <br/>
 * *Laboratory Assistant*
     * POLS 6481 - Quantitative Methods II, Spring 2020 (G) 
