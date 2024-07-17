@@ -4,21 +4,23 @@ bio: My research interests include Peace and Conflict Processes.
 education:
   courses:
   - course: PhD in Political Science and Government
-    institution: University of Houston, Texas/USA
+    institution: University of Houston, Texas, USA
     year: 2022
   - course: MA in International Relations
-    institution: Social Sciences University of Ankara, Ankara/Turkey
+    institution: Social Sciences University of Ankara, Ankara, Turkey
     year: 2016
   - course: BA in Translation Studies & Double Major in Political Science
-    institution: Cankaya University, Ankara/Turkey
+    institution: Cankaya University, Ankara, Turkey
     year: 2014
     
     
 email: ''
 interests:
-- Peacekeeping Effectiveness
-- Supply-side of Peacekeeping
-- Legitimacy of UN Missions
+- International Organizations
+- Civil War Dynamics
+- UN Peacekeeping
+
+
 organizations:
 - name: Technical University of Munich
   url: https://www.hfp.tum.de/en/governance/team/

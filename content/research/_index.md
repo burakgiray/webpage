@@ -39,7 +39,7 @@ layout: docs
 * "UN Peacekeeping as an Opportunity to Modernize an Army" (with Jared Oestman)
 
 * "The Composition of Peacekeepers and the Timing of Post-Civil War Elections"
-<img src="../../img/houston.jpg" alt="" style="width:600px;height:350px;"> 
+<img src="../../img/peacekeeping.jpg" alt="" style="width:700px;height:425px;"> 
  
 
 
