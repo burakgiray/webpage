@@ -34,7 +34,7 @@ layout: docs
     * POLS 6480, Quantitative Methods I, Fall 2019 (G)
 <br/>
 
-<img src="../../img/pic1.jpg" alt="" style="width:450px;height:450px;">
-
+<img src="../../img/pic1.jpg" alt="" style="width:450px;height:450px;opacity: 0.8;">
+ 
 U: Undergraduate Level Courses\
 G: Graduate Level Courses
