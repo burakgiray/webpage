@@ -6,7 +6,7 @@ layout: docs
 ---
 
  
-<h1 style="text-align:center;">Teaching Experience</h1>
+<h1 style="text-align:center; padding: 10px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Teaching Experience</h1>
 <hr />
 
 <h3 style="background-color:#102ec8;color:white">Hochschule für Politik München</h3>  
