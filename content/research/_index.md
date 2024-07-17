@@ -8,7 +8,7 @@ layout: docs
 <h1 style="text-align:center;">Publications</h1>
 
 <hr />
-<h3 style="background-color:blue;color:white">Peer-reviewed Articles</h3>  
+<h3 style="background-color:#102ec8;color:white">Peer-reviewed Articles</h3>  
 
 * Giray, Burak and J. Tyson Chatagnier. (2024). <a href="https://doi.org/10.1177/10659129231190614">''Election Accomplished: Democracies and the Timing of Peacekeeper Drawdowns.''</a> <em>Political Research Quarterly</em>, 77(1), 3-16. <a href="/files/election_accomplished_supplementary_files.zip" style="color:blueviolet">{{<icon name="download" pack="fas" >}}[Replication Materials]</a>
 <br/> 
@@ -20,7 +20,7 @@ layout: docs
 * Giray, Burak. (2022). <a href="https://doi.org/10.1515/peps-2022-0028">''Public Support for the UN Missions and Attacks on Peacekeepers: Evidence from the Democratic Republic of the Congo.''</a> <em>Peace Economics, Peace Science and Public Policy</em> 28 (4): 305-332.  <a href="/files/replication files PEPSPP.zip" style="color:blueviolet">{{<icon name="download" pack="fas" >}}[Replication Materials]</a>
 <br/>
 
-<h3 style="background-color:blue;color:white">Works under Review</h3>  
+<h3 style="background-color:#102ec8;color:white">Works under Review</h3>  
 
 * "The Vital Role of Peacekeepers in Medical Assistance and COVID-19 Response" (Revise & Resubmit)
 
@@ -28,7 +28,7 @@ layout: docs
 
 * "Repaying Debt with Land: Debt Diplomacy, Domestic Politics, and Land Transactions" (with Jonas Bunte and Patrick Shea)
 
-<h3 style="background-color:blue;color:white">Works in Progress</h3>  
+<h3 style="background-color:#102ec8;color:white">Works in Progress</h3>  
 
 * "Introducing UN Peacekeeping Activities and Public Services (UNPAPS) Dataset"
 
