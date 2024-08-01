@@ -60,3 +60,6 @@ Using the UNPAPS dataset, it is also possible to track the daily infrastructure-
 <h3 style="background-color:#102ec8;color:white">Acknowledgement</h3>  
 
 <p style='text-align: justify;'>The project is supported by the PRIME programme of the German Academic Exchange Service (DAAD) with funds from the German Federal Ministry of Education and Research (BMBF).</p>
+
+<a href="https://twitter.com/Burak92Giray?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @Burak92Giray</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+

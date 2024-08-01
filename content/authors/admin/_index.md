@@ -58,15 +58,3 @@ I hold a Ph.D. in Political Science at the [University of Houston](https://www.u
 My Ph.D. dissertation titled ["UN Peacekeeping Operations: Conflicting Interests and Effectiveness"](https://uh-ir.tdl.org/handle/10657/14470) examines the supply-side dynamics of peacekeeping and its impact on the overall effectiveness of UN missions, in which I argued that the motivations of countries deploying peacekeepers significantly influence the fulfillment of mission mandates. When troop-contributing countries prioritize their private interests over the principles of UN peacekeeping, the impartiality and neutrality of the UN are compromised. This undermines its ability to address the credible commitment problem among combatants and fulfill core mandates such as civilian protection.
 
 {{<icon name="download" pack="fas" >}} Download my [resumé](https://www.burakgiray.com/files/burakgiray.pdf). 
-
-
-<a href="https://twitter.com/Burak92Giray?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @Burak92Giray</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-
-
-<div id="twitter-timeline">
-  <a class="twitter-timeline" href="https://twitter.com/Burak92Giray?ref_src=twsrc%5Etfw">
-    Tweets by Burak92Giray
-  </a> 
-  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-</div>

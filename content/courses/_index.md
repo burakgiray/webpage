@@ -38,3 +38,6 @@ layout: docs
  
 U: Undergraduate Level Courses\
 G: Graduate Level Courses
+
+<a href="https://twitter.com/Burak92Giray?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @Burak92Giray</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
