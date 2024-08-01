@@ -23,7 +23,7 @@
   
 
 #[[main]]
-#  name = "Posts"
+# name = "Posts"
 #  url = "#posts"
 #  weight = 30    
 

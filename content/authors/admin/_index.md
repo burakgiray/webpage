@@ -60,3 +60,13 @@ My Ph.D. dissertation titled ["UN Peacekeeping Operations: Conflicting Interests
 {{<icon name="download" pack="fas" >}} Download my [resumé](https://www.burakgiray.com/files/burakgiray.pdf). 
 
 
+<a href="https://twitter.com/Burak92Giray?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @Burak92Giray</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+<div id="twitter-timeline">
+  <a class="twitter-timeline" href="https://twitter.com/Burak92Giray?ref_src=twsrc%5Etfw">
+    Tweets by Burak92Giray
+  </a> 
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>

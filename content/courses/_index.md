@@ -10,7 +10,7 @@ layout: docs
 <hr />
 
 <h3 style="background-color:#102ec8;color:white">Hochschule für Politik München</h3>  
- 
+
 * *Lecturer*
     * Module (SOT86705) - Disruptions in Governance and Technology, Summer 2024 (G)
         * Seminar 1 - Digitalization of Civil Conflicts and Peace Operations <a href="/files/syllabus_tum1.pdf" style="color: #blue">[Syllabus]</a>
