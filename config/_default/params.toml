@@ -88,7 +88,7 @@ show_related = {docs = false, page = false, post = false, project = false, publi
 ############################
 
 # Enter contact details (optional). To hide a field, clear it to "".
-email = "burak92giray@gmail.com"
+ email = "burak92giray@gmail.com"
 # phone = "(832)-643-3032"
 
 # Address

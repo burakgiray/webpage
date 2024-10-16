@@ -9,12 +9,19 @@ layout: docs
 <h1 style="text-align:center; padding: 10px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Teaching Experience</h1>
 <hr />
 
-<h3 style="background-color:#102ec8;color:white">Hochschule für Politik München</h3>  
+<h3 style="background-color:#102ec8;color:white">Technical University of Munich</h3>  
 
 * *Lecturer*
-    * Module (SOT86705) - Disruptions in Governance and Technology, Summer 2024 (G)
-        * Seminar 1 - Digitalization of Civil Conflicts and Peace Operations <a href="/files/syllabus_tum1.pdf" style="color: #blue">[Syllabus]</a>
-        * Seminar 2 - UN Peacekeeping in a Multipolar World <a href="/files/syllabus_tum2.pdf" style="color: #blue">[Syllabus]</a>
+  * Module (SOT86707) - International Security, Winter 2024 (G)
+    * Seminar 1 - Theoretical Understanding of Interstate and Intrastate Conflicts <a href="/files/syllabus_conflict.pdf" style="color: #blue">[Syllabus]</a>
+    * Seminar 2 - Conflict Resolution Strategies for Peace <a href="/files/syllabus_resolution.pdf" style="color: #blue">[Syllabus]</a>
+<br/>
+  * Module (POL60701) - Digital Transformations in Europe, Winter 2024 (G)
+    * Seminar 1 - Textual Data Analytics in EU Contexts <a href="/files/syllabus_textanalysis.pdf" style="color: #blue">[Syllabus]</a>
+<br/>
+  * Module (SOT86705) - Disruptions in Governance and Technology, Summer 2024 (G)
+    * Seminar 1 - Digitalization of Civil Conflicts and Peace Operations <a href="/files/syllabus_tum1.pdf" style="color: #blue">[Syllabus]</a>
+    * Seminar 2 - UN Peacekeeping in a Multipolar World <a href="/files/syllabus_tum2.pdf" style="color: #blue">[Syllabus]</a>
  
  
 <h3 style="background-color:#E5E4E2;color:#c8102e">Hertie School</h3>  
