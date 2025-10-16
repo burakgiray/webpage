@@ -50,7 +50,6 @@ layout: docs
 
 <div style="padding: 15px; line-height: 1.6; font-size: 0.95em; color: #2c3e50;">
 
-* "Introducing UN Peacekeeping Activities and Public Services (UNPAPS) Dataset"
 * "Naming, Praising, and Understanding: What Troop-Contributing Countries Actually Do in UN Peacekeeping Operations"
 * "UN Peacekeeping as an Opportunity to Modernize an Army" (with Jared Oestman)
 * "The Composition of Peacekeepers and the Timing of Post-Civil War Elections"
